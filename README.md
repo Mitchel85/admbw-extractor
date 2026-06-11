@@ -17,14 +17,14 @@ Der ADMBw-Extraktor erzwingt daher einen **iterativen Step-by-Step-Ansatz**. Das
 
 ### Die 4 Phasen der Interaktion:
 
-1. **Phase 1: Viewpoint-Mapping**
-   Die KI scannt den Text und schlägt vor, welche NAF-Viewpoints (z.B. L4, P2, C1) behandelt werden. 
-   *👉 Dein Part: Du kannst eingreifen, irrelevanten Kontext streichen oder fehlende Viewpoints einfordern ("Lass C5 weg, fokussiere dich nur auf L4 und P4").*
-2. **Phase 2: Extraktion von Elementen & Beziehungen**
-   Die KI zieht die reinen Daten aus dem Text und mappt sie auf EA-Metaclasses. 
-   *👉 Dein Part: Du kontrollierst den Entwurf. Fehlt ein System? Ist eine Abhängigkeit falsch verstanden worden? Korrigiere es einfach im Chat.*
-3. **Phase 3: Der 7-fache Double-Check**
-   Die KI prüft ihren eigenen Entwurf hart gegen die hinterlegte Knowledge-Base (AppliesTo-Regeln, Viewpoint-Zulässigkeit, etc.).
+1. **Phase 1: Concern-Analyse & Metamodell-Extraktion (Architektur-Graph)**
+   Die KI scannt den Text und extrahiert basierend auf deinem Erkenntnisinteresse (Concern) erst einmal völlig frei alle relevanten Elemente und Beziehungen. Es wird ein reiner Architektur-Graph (Semantisches Netz) erzeugt.
+   *👉 Dein Part: Du kontrollierst dieses Netz. Fehlt ein System? Ist eine Abhängigkeit falsch? Korrigiere es, bevor überhaupt über Viewpoints geredet wird.*
+2. **Phase 2: Viewpoint-Zuordnung**
+   Aus dem freigegebenen Architektur-Netz leitet die KI nun zielgerichtet exakt jene NAF-Viewpoints ab, die den ursprünglichen Concern beantworten.
+   *👉 Dein Part: Du bestätigst die ausgewählten Sichten auf dein Modell.*
+3. **Phase 3: Der 7-facher Double-Check**
+   Die KI prüft ihren Entwurf pro Viewpoint hart gegen die hinterlegte Knowledge-Base (AppliesTo-Regeln, Viewpoint-Zulässigkeit, etc.).
    *👉 Dein Part: Du sichtest den Fehler-Report und gibst das Go zur Fehlerbehebung.*
 4. **Phase 4: Finale Generierung**
    Erst nach deiner finalen Freigabe werden die komplexen Mermaid-Diagramme und Markdown-Tabellen gerendert.
@@ -51,10 +51,10 @@ graph TD
     
     B --> E{Iterativer 4-Phasen-Prozess}
     
-    E -->|Phase 1| F[Viewpoint-Mapping]
-    F -.->|Nutzer steuert / korrigiert| F
+    E -->|Phase 1| F[Concern-Analyse & Element-Extraktion]
+    F -.->|Nutzer validiert Metamodell| F
     
-    F -->|Nutzer-Freigabe| G[Element- & Konnektorextraktion]
+    F -->|Nutzer-Freigabe| G[Ableitung der NAF-Viewpoints]
     G -.->|Nutzer ergänzt / passt an| G
     
     G -->|Nutzer-Freigabe| H[7-facher Regel-Double-Check]
