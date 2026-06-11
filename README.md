@@ -15,18 +15,21 @@ Die ADMBw-NAFv4-Vorgaben sind hochkomplex (317 Stereotype, strikte Metamodell- u
 
 Der ADMBw-Extraktor erzwingt daher einen **iterativen Step-by-Step-Ansatz**. Das bedeutet: Die KI arbeitet in Phasen und stoppt nach jeder Phase, um auf dein Feedback zu warten. **Du bist der Architekt (Gatekeeper), die KI ist dein Werkzeug.**
 
-### Die 4 Phasen der Interaktion:
+### Die 5 Phasen der Interaktion:
 
-1. **Phase 1: Concern-Analyse & Metamodell-Extraktion (Architektur-Graph)**
-   Die KI scannt den Text und extrahiert basierend auf deinem Erkenntnisinteresse (Concern) erst einmal völlig frei alle relevanten Elemente und Beziehungen. Es wird ein reiner Architektur-Graph (Semantisches Netz) erzeugt.
+1. **Phase 1: Klärung des Erkenntnisinteresses (Concern)**
+   Gemäß ISO/IEC 42010 startet alles mit dem "Concern". Die KI fragt dich aktiv, was genau du mit der Modellierung erreichen willst (falls du es nicht schon im ersten Prompt mitgegeben hast).
+   *👉 Dein Part: Du bestätigst das formulierte Erkenntnisinteresse.*
+2. **Phase 2: Metamodell-Extraktion (Architektur-Graph)**
+   Die KI scannt den Text und extrahiert basierend auf dem freigegebenen Concern erst einmal völlig frei alle relevanten Elemente und Beziehungen. Es wird ein reiner Architektur-Graph (Semantisches Netz) erzeugt.
    *👉 Dein Part: Du kontrollierst dieses Netz. Fehlt ein System? Ist eine Abhängigkeit falsch? Korrigiere es, bevor überhaupt über Viewpoints geredet wird.*
-2. **Phase 2: Viewpoint-Zuordnung**
+3. **Phase 3: Viewpoint-Zuordnung**
    Aus dem freigegebenen Architektur-Netz leitet die KI nun zielgerichtet exakt jene NAF-Viewpoints ab, die den ursprünglichen Concern beantworten.
    *👉 Dein Part: Du bestätigst die ausgewählten Sichten auf dein Modell.*
-3. **Phase 3: Der 7-facher Double-Check**
+4. **Phase 4: Der 7-fache Double-Check**
    Die KI prüft ihren Entwurf pro Viewpoint hart gegen die hinterlegte Knowledge-Base (AppliesTo-Regeln, Viewpoint-Zulässigkeit, etc.).
    *👉 Dein Part: Du sichtest den Fehler-Report und gibst das Go zur Fehlerbehebung.*
-4. **Phase 4: Finale Generierung**
+5. **Phase 5: Finale Generierung**
    Erst nach deiner finalen Freigabe werden die komplexen Mermaid-Diagramme und Markdown-Tabellen gerendert.
 
 **Der Vorteil:** 100% Kontrolle über die Modellierung, 0% Halluzination, perfekt standardkonforme ADMBw-Modelle.
@@ -49,9 +52,12 @@ graph TD
     C2 -.-> B
     C3 -.-> B
     
-    B --> E{Iterativer 4-Phasen-Prozess}
+    B --> E{Iterativer 5-Phasen-Prozess}
     
-    E -->|Phase 1| F[Concern-Analyse & Element-Extraktion]
+    E -->|Phase 1| F0[Klärung des Concerns]
+    F0 -.->|Nutzer bestätigt Erkenntnisinteresse| F0
+    
+    F0 -->|Freigabe| F[Element-Extraktion / Architektur-Graph]
     F -.->|Nutzer validiert Metamodell| F
     
     F -->|Nutzer-Freigabe| G[Ableitung der NAF-Viewpoints]

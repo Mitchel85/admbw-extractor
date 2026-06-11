@@ -11,7 +11,7 @@ Jede Beziehung = EA-Metatyp + Stereotyp. Der Stereotyp MUSS auf diesen Metatyp a
 
 | EA-Metatyp | Häufigste Stereotype |
 |-----------|---------------------|
-| **Dependency** (100) | `AchievedEffect`, `ActivityPerformableUnderCondition`, `ActsUpon`, `ActualConditionToActualResource`, `ActualMeasurementSetAppliesFor` +95 |
+| **Dependency** (101) | `AchievedEffect`, `ActivityPerformableUnderCondition`, `ActsUpon`, `ActualConditionToActualResource`, `ActualMeasurementSetAppliesFor`, `AlignsWithGoal` +95 |
 | **Class** (70) | `Architecture`, `Asset`, `Capability`, `CapabilityConfiguration`, `Classification` +65 |
 | **Object** (21) | `Achiever`, `ActualCondition`, `ActualEnduringTask`, `ActualEnterprisePhase`, `ActualEnvironment` +16 |
 | **Part** (20) | `AssetRole`, `CapabilityRole`, `ConceptRole`, `DataRole`, `InformationRole` +15 |
@@ -49,7 +49,7 @@ Jede Beziehung = EA-Metatyp + Stereotyp. Der Stereotyp MUSS auf diesen Metatyp a
 | C4 | Standard Processes | Standardisierte Prozesse |
 | C5 | Effects | Wirkungen, Effekte |
 | C7 | Performance Parameters | Leistungsparameter |
-| C8 | Planning Assumptions | Planungsannahmen |
+| C8 | Planning Assumption | Planungsannahmen |
 | Cr | Capability Roadmap | Zeitliche Fähigkeitsentwicklung |
 
 ### 🔌 Service Specification Viewpoints (S)
@@ -69,9 +69,9 @@ Jede Beziehung = EA-Metatyp + Stereotyp. Der Stereotyp MUSS auf diesen Metatyp a
 ### 🧠 Logical Specification Viewpoints (L)
 | Kürzel | Name | Fokus |
 |--------|------|-------|
-| L1 | Node Types | Knotentypen (OperationalAgent, OpNode) |
+| L1 | Node Types | Knotentypen (OperationalPerformer, OperationalRole, Asset) |
 | L2 | Logical Scenario | Szenarien, High-Level Operational Concept |
-| L3 | Node Interactions | Knoteninteraktionen, Needlines, Informationsflüsse |
+| L3 | Node Interaction | Knoteninteraktionen, Needlines, Informationsflüsse |
 | L4 | Logical Activities | Aktivitäten, Prozesse, OperationalActivity |
 | L5 | Logical States | Zustandsautomaten |
 | L6 | Logical Sequence | Sequenzen, Event-Traces |
