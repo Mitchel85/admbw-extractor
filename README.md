@@ -9,13 +9,35 @@ Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (maßgeschneidert für Open
 
 ---
 
-## 🔄 Workflow & Funktionsweise
+## 🧠 Das Kernkonzept: Warum ein iterativer Workflow?
 
-Der Extraktor bricht komplexe Dokumente strukturiert auf und generiert daraus im Chat direkt native Mermaid-Diagramme für die jeweiligen Architektur-Viewpoints.
+Die ADMBw-NAFv4-Vorgaben sind hochkomplex (317 Stereotype, strikte Metamodell- und Konnektor-Regeln). Wenn eine KI versucht, ein ganzes Dokument in einem einzigen Zug in ein fertiges Architekturmodell zu verwandeln, kommt es unweigerlich zu Halluzinationen, übersehenen Details oder Regelverstößen.
+
+Der ADMBw-Extraktor erzwingt daher einen **iterativen Step-by-Step-Ansatz**. Das bedeutet: Die KI arbeitet in Phasen und stoppt nach jeder Phase, um auf dein Feedback zu warten. **Du bist der Architekt (Gatekeeper), die KI ist dein Werkzeug.**
+
+### Die 4 Phasen der Interaktion:
+
+1. **Phase 1: Viewpoint-Mapping**
+   Die KI scannt den Text und schlägt vor, welche NAF-Viewpoints (z.B. L4, P2, C1) behandelt werden. 
+   *👉 Dein Part: Du kannst eingreifen, irrelevanten Kontext streichen oder fehlende Viewpoints einfordern ("Lass C5 weg, fokussiere dich nur auf L4 und P4").*
+2. **Phase 2: Extraktion von Elementen & Beziehungen**
+   Die KI zieht die reinen Daten aus dem Text und mappt sie auf EA-Metaclasses. 
+   *👉 Dein Part: Du kontrollierst den Entwurf. Fehlt ein System? Ist eine Abhängigkeit falsch verstanden worden? Korrigiere es einfach im Chat.*
+3. **Phase 3: Der 7-fache Double-Check**
+   Die KI prüft ihren eigenen Entwurf hart gegen die hinterlegte Knowledge-Base (AppliesTo-Regeln, Viewpoint-Zulässigkeit, etc.).
+   *👉 Dein Part: Du sichtest den Fehler-Report und gibst das Go zur Fehlerbehebung.*
+4. **Phase 4: Finale Generierung**
+   Erst nach deiner finalen Freigabe werden die komplexen Mermaid-Diagramme und Markdown-Tabellen gerendert.
+
+**Der Vorteil:** 100% Kontrolle über die Modellierung, 0% Halluzination, perfekt standardkonforme ADMBw-Modelle.
+
+---
+
+## 🔄 Workflow-Visualisierung
 
 ```mermaid
 graph TD
-    A[📄 Fachtext / Prosa<br>PDF, Word, TXT] -->|Upload in Chat| B(🤖 ADMBw-Extraktor<br>OpenWebUI)
+    A[📄 Fachtext / Prosa] -->|Upload in Chat| B(🤖 ADMBw-Extraktor)
     
     subgraph "Wissensbasis (RAG Knowledge)"
     C1[📖 Stereotype]
@@ -27,15 +49,17 @@ graph TD
     C2 -.-> B
     C3 -.-> B
     
-    D[⚙️ System Prompt<br>Iterativer Prozess] -.-> B
+    B --> E{Iterativer 4-Phasen-Prozess}
     
-    B --> E{Iterative Extraktion}
-    E -->|Schritt 1| F[Analyse & Viewpoint-Zuordnung]
-    F -->|Schritt 2| G[Element- & Konnektorenextraktion]
-    G -->|Schritt 3| H[7-facher Double-Check]
-    H -->|Freigabe durch Nutzer| I[✅ Ausgabe Generierung]
+    E -->|Phase 1| F[Viewpoint-Mapping]
+    F -.->|Nutzer steuert / korrigiert| F
     
-    I --> J[📊 Mermaid Diagramme<br>& Markdown Tabellen]
+    F -->|Nutzer-Freigabe| G[Element- & Konnektorextraktion]
+    G -.->|Nutzer ergänzt / passt an| G
+    
+    G -->|Nutzer-Freigabe| H[7-facher Regel-Double-Check]
+    
+    H -->|Nutzer-Freigabe| I[✅ Finale Diagramme & Tabellen]
 ```
 
 ---
@@ -73,10 +97,6 @@ graph TD
 ## 🛠 Nutzung im Alltag
 
 1. Öffne einen Chat mit dem neuen ADMBw-Modell.
-2. Lade ein Prosa-Dokument (z.B. Betriebskonzept, Fähigkeitsbeschreibung) hoch oder kopiere den Text in den Chat.
-3. Die KI startet automatisch den **iterativen 4-Schritte-Prozess**:
-   - **Schritt 1:** Identifikation und Zuordnung der Viewpoints.
-   - **Schritt 2:** Detaillierte Extraktion der Elemente.
-   - **Schritt 3:** Ausführung des Double-Check Reports (Regelkonformität).
-   - **Schritt 4:** Finale Erzeugung der Mermaid-Diagramme.
-4. **Wichtig:** Antworte zwischen den Schritten kurz (z.B. mit "Passt, weiter zu Schritt 2"), um den iterativen Flow aufrechtzuerhalten und Halluzinationen vorzubeugen.
+2. Lade ein Prosa-Dokument hoch oder kopiere den Text in den Chat.
+3. Die KI startet **Phase 1**.
+4. Antworte auf jeden Schritt der KI kurz (z.B. *"Passt so, weiter zu Phase 2"* oder *"Füge bei den Capabilities noch 'Satellitenkommunikation' hinzu, dann weiter"*), bis die finalen Diagramme in Phase 4 generiert werden.
