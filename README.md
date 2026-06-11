@@ -1,43 +1,82 @@
-🚀 ADMBw-Extraktor – Einfache Anleitung
-❓ Was macht der ADMBw-Extraktor?
-Der ADMBw-Extraktor ist ein KI-Tool, das Fachtexte automatisch in ADMBw-NAFv4-Architekturmodelle umwandelt. Er liest Dokumente, extrahiert relevante Informationen und erstellt daraus standardkonforme Modelle mit Diagrammen – Viewpoint für Viewpoint, mit 7-facher Qualitätsprüfung.
+# 🚀 ADMBw-Extraktor (NAFv4)
 
-📁 Dateien (5 Stück)
-System Prompt.txt – Steuert den gesamten Workflow
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Standard](https://img.shields.io/badge/Standard-ADMBw%20v2025.10-blue)
+![Framework](https://img.shields.io/badge/Framework-NAFv4-orange)
+![Plattform](https://img.shields.io/badge/Platform-OpenWebUI-purple)
 
-ADMBw-Knowledge-Stereotypes.md – Alle 317 Stereotype mit Regeln
+Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (maßgeschneidert für OpenWebUI), der architekturrelevante Fachtexte (Prosa) automatisch analysiert und in standardkonforme **ADMBw-NAFv4-Architekturmodelle** übersetzt. Er nutzt einen streng iterativen Prozess mit einem 7-fachen Double-Check, um höchste Modellierungsqualität und Regelkonformität zu garantieren.
 
-ADMBw-Knowledge-Viewpoints.md – Metamodell-Regeln pro Viewpoint
+---
 
-ADMBw-Knowledge-Connectors.md – Konnektor-Regeln und Viewpoint-Liste
+## 🔄 Workflow & Funktionsweise
 
-Dokumentation-ADMBw.pdf – Offizielle ADMBw-NAFv4-Dokumentation
+Der Extraktor bricht komplexe Dokumente strukturiert auf und generiert daraus im Chat direkt native Mermaid-Diagramme für die jeweiligen Architektur-Viewpoints.
 
-🔧 Einrichtung in OpenWebUI (3 Minuten)
-Schritt 1: System-Prompt laden
-Gehen Sie zu Settings → System Prompt und kopieren Sie den Inhalt aus System Prompt.txt hinein. Speichern Sie die Einstellungen.
+```mermaid
+graph TD
+    A[📄 Fachtext / Prosa<br>PDF, Word, TXT] -->|Upload in Chat| B(🤖 ADMBw-Extraktor<br>OpenWebUI)
+    
+    subgraph "Wissensbasis (RAG Knowledge)"
+    C1[📖 Stereotype]
+    C2[🔗 Konnektoren]
+    C3[📐 Viewpoints]
+    end
+    
+    C1 -.-> B
+    C2 -.-> B
+    C3 -.-> B
+    
+    D[⚙️ System Prompt<br>Iterativer Prozess] -.-> B
+    
+    B --> E{Iterative Extraktion}
+    E -->|Schritt 1| F[Analyse & Viewpoint-Zuordnung]
+    F -->|Schritt 2| G[Element- & Konnektorenextraktion]
+    G -->|Schritt 3| H[7-facher Double-Check]
+    H -->|Freigabe durch Nutzer| I[✅ Ausgabe Generierung]
+    
+    I --> J[📊 Mermaid Diagramme<br>& Markdown Tabellen]
+```
 
-Schritt 2: Knowledge-Dateien hinterlegen
-Gehen Sie zu Knowledge → Upload und laden Sie alle 4 Knowledge-Dateien hoch. Aktivieren Sie die RAG-Semantiksuche.
+---
 
-Schritt 3: Testen
-Geben Sie als Start-Prompt ein: Starte den ADMBw-Extraktor Workflow. Analysiere das angehängte Dokument.
+## 📁 Repository-Struktur
 
-🔄 Ablauf (3 Schritte)
-Schritt 1 – Vorschlag: Die KI liest Ihr Dokument und schlägt passende Viewpoints vor. Sie bestätigen oder ändern die Vorschläge.
+| Datei | Beschreibung |
+|-------|--------------|
+| ⚙️ `system_prompt.md` | Steuert den iterativen Workflow, das Ausgabeverhalten und die Qualitätskontrolle des LLMs. |
+| 🧠 `ADMBw-Knowledge-Stereotypes.md` | Enthält alle 317 Stereotype inklusive AppliesTo-Regeln und TaggedValues. |
+| 🧠 `ADMBw-Knowledge-Viewpoints.md` | Metamodell-Regeln, die exakt festlegen, welche Elemente in welchem Viewpoint erlaubt sind. |
+| 🧠 `ADMBw-Knowledge-Connectors.md` | Konnektor-Regeln, Abhängigkeiten und die vollständige Viewpoint-Liste. |
+| 📚 `Dokumentation-ADMBw-v2025.10.pdf`| Die offizielle Dokumentation (als menschliche Referenz). |
 
-Schritt 2 – Extraktion: Die KI extrahiert Viewpoint für Viewpoint mit 7-fachem Double-Check. Sie prüfen jedes Ergebnis und geben Feedback.
+---
 
-Schritt 3 – Export: Zusammenfassung aller Viewpoints. Optionaler HTML-Gesamtexport verfügbar.
+## 🔧 Einrichtung in OpenWebUI (Dauer: ~3 Minuten)
 
-✅ Wichtig zu wissen
-Die KI wartet nach jedem Schritt auf Ihr Feedback – sie extrahiert nicht alle Viewpoints auf einmal.
+### 1. Modell anlegen & System-Prompt konfigurieren
+1. Erstelle im **Workspace** ein neues Modell (z.B. basierend auf GPT-4o, Claude 3.5 Sonnet oder DeepSeek).
+2. Vergib einen Namen (z.B. `ADMBw-Prosa-Analyst`).
+3. Kopiere den gesamten Inhalt der Datei `system_prompt.md` in das Feld **System Prompt**.
 
-Jeder Viewpoint enthält einen 7-fach Double-Check für Qualitätssicherung.
+### 2. Knowledge-Dateien hinterlegen
+1. Gehe in den Bereich **Knowledge** und lade die folgenden drei Dateien hoch:
+   * `ADMBw-Knowledge-Stereotypes.md`
+   * `ADMBw-Knowledge-Viewpoints.md`
+   * `ADMBw-Knowledge-Connectors.md`
+2. Verknüpfe diese Knowledge-Base mit deinem zuvor erstellten Modell.
 
-HTML-Export ist pro Viewpoint oder als Gesamtexport verfügbar.
+*(Tipp: Die Original-PDF-Dokumentation muss nicht in die Knowledge-Base geladen werden. Die Markdown-Dateien bilden die gesamte Logik wesentlich token-effizienter und präziser für das LLM ab.)*
 
-Mermaid-Diagramme folgen strikten Syntax-Regeln (keine Guillemets, korrektes Escaping).
+---
 
-💡 Nutzung in anderen KI-Systemen
-ChatGPT / Claude / Lokale LLMs: Kopieren Sie den System-Prompt in Custom Instructions oder System Message. Fügen Sie die Knowledge-Dateien als Upload hinzu. Verwenden Sie den gleichen Start-Prompt.
+## 🛠 Nutzung im Alltag
+
+1. Öffne einen Chat mit dem neuen ADMBw-Modell.
+2. Lade ein Prosa-Dokument (z.B. Betriebskonzept, Fähigkeitsbeschreibung) hoch oder kopiere den Text in den Chat.
+3. Die KI startet automatisch den **iterativen 4-Schritte-Prozess**:
+   - **Schritt 1:** Identifikation und Zuordnung der Viewpoints.
+   - **Schritt 2:** Detaillierte Extraktion der Elemente.
+   - **Schritt 3:** Ausführung des Double-Check Reports (Regelkonformität).
+   - **Schritt 4:** Finale Erzeugung der Mermaid-Diagramme.
+4. **Wichtig:** Antworte zwischen den Schritten kurz (z.B. mit "Passt, weiter zu Schritt 2"), um den iterativen Flow aufrechtzuerhalten und Halluzinationen vorzubeugen.
