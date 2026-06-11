@@ -46,6 +46,7 @@
 | `AffectedFunctions` | Dependency | |
 | `AffectedResource` | Dependency | |
 | `Alias` | Note | |
+| `AlignsWithGoal` | Dependency | |
 | `ArbitraryConnector` | Dependency | |
 | `ArchitecturalDescription` | Package | status, version, methodologyUsed, approvalAuthority, architect, assumptionAndConstraint +9 |
 | `ArchitecturalReference` | Dependency | |

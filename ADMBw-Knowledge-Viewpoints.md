@@ -1,371 +1,987 @@
 # ADMBw Knowledge: Metamodell-Regeln pro Viewpoint
 
-> **OpenWebUI Knowledge-Datei.** Enthält die erlaubten Elemente und Konnektoren für jeden Viewpoint.
-> Extrahiert aus der ADMBw-Dokumentation v2025.10. Bei Fragen zur Viewpoint-Konformität: hier suchen.
+> **OpenWebUI Knowledge-Datei.** Erlaubte Meta-Model-Elemente für jeden der 53 Viewpoints.
+> Quelle: Offizielle ADMBw-Dokumentation v2025.10 (Kapitel 2, "Meta Model Elements"-Tabellen).
+> Diese Listen sind 1:1 maschinell aus der PDF extrahiert — die PDF ist die Quelle der Wahrheit.
 
-## Concept Viewpoints
+## Lesehinweise
+- **(abstrakt 🔒)** = Abstraktes Element. NIEMALS direkt instanziieren — nur konkrete Subtypen verwenden.
+- Die Klammerangabe ist die EA-Metaclass laut Stereotyp-Katalog (AppliesTo).
+- Elemente ohne Klammerangabe: siehe Knowledge: Stereotypes für Details.
+- Ein Element darf in einem Viewpoint NUR verwendet werden, wenn es hier gelistet ist.
+
+## 🏛️ Concept Viewpoints
 
 ### C1 – Capability Taxonomy
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (9):**
 - `Capability` (auf Class)
-- `CapabilityGeneralization` (auf Generalization) — verbindet Capability→Capability
-- `PropertySet` (abstrakt) — NICHT direkt verwenden
-- `Measurement` (auf Class)
+- `CapabilityGeneralization` (auf Generalization)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `Measurement` (auf Part)
 - `MeasurementType` (auf Class)
-- `OwnsMeasurement` — verbindet MeasurableElement→Measurement
+- `OwnsMeasurement` (auf Dependency)
+- `PropertySet` (auf PropertySet) (abstrakt 🔒)
+- `Satisfy` (auf Dependency)
 - `StrategicConstraint` (auf Class)
-- `Satisfy` — verbindet Constraint→Element
 
 ### C2 – Enterprise Vision
-**Erlaubte Elemente:**
-- `EnterprisePhase` / `ActualEnterprisePhase` (auf Object)
-- `TemporalPart` (auf Part)
-- `WholeLifeEnterprise` (auf Class)
-- `ResourceArchitecture` (auf Class)
-- `EnterpriseVision` (auf Class)
+**Erlaubte Meta-Model-Elemente (23):**
 - `ActualEnduringTask` (auf Object)
+- `ActualEnterprisePhase` (auf Object)
 - `Capability` (auf Class)
-- `CapabilityForTask` — verbindet Capability→EnduringTask
+- `CapabilityForTask` (auf Abstraction)
+- `CapableElement` (auf CapableElement) (abstrakt 🔒)
+- `EnduringTask` (auf Class)
+- `EnterpriseGoal` (auf Class)
+- `EnterprisePhase` (auf Class)
+- `EnterpriseVision` (auf Class)
+- `Environment` (auf Class)
+- `EnvironmentalCondition` (auf Dependency)
+- `Exhibits` (auf Abstraction)
+- `GoalForActualEnterprisePhase` (auf Dependency)
+- `OperationalArchitecture` (auf Class)
+- `OperationalArchitectureOfEnterprisePhase` (auf Dependency)
+- `PhysicalArchitectureOfEnterprisePhase` (auf Dependency)
+- `ResourceArchitecture` (auf Class)
+- `Satisfy` (auf Dependency)
+- `StatementTask` (auf Dependency)
 - `StrategicConstraint` (auf Class)
-- `VisionForActualEnterprisePhase` — verbindet Vision→EnterprisePhase
+- `TemporalPart` (auf Part)
+- `VisionForActualEnterprisePhase` (auf Dependency)
+- `WholeLifeEnterprise` (auf Class)
 
 ### C3 – Capability Dependencies
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (7):**
 - `Capability` (auf Class)
-- `CapabilityDependency` (auf Dependency) — verbindet Capability→Capability
+- `CapabilityDependency` (auf Dependency)
+- `CapabilityGeneralization` (auf Generalization)
+- `CapabilityRole` (auf Part)
+- `CapabilityRoleDependency` (auf Dependency)
+- `Satisfy` (auf Dependency)
+- `StrategicConstraint` (auf Class)
 
 ### C4 – Standard Processes
-**Erlaubte Elemente:**
-- `BusinessProcess` (auf Activity)
-- `ProcessGeneralization` (auf Generalization)
-- `ProcessEdge`, `ProcessOperation`, `ProcessParameter`, `ProcessUsage` (alle abstrakt)
+**Erlaubte Meta-Model-Elemente (11):**
+- `ActualEnduringTask` (auf Object)
+- `BusinessProcess` (auf Activity) (abstrakt 🔒)
+- `Capability` (auf Class)
+- `CapabilityForTask` (auf Abstraction)
+- `EnduringTask` (auf Class)
+- `MapsToCapability` (auf Abstraction)
+- `OperationalActivity` (auf Activity)
+- `OperationalActivityAction` (auf Action, Activity)
+- `Satisfy` (auf Dependency)
+- `StandardOperationalActivity` (auf Activity)
+- `StrategicConstraint` (auf Class)
 
 ### C5 – Effects
-**Erlaubte Elemente:**
-- `DesiredEffect` — verbindet Desirer→Effect
-- `AchievedEffect` — verbindet Achiever→Effect
-- `Desirer`, `Achiever` (auf Object)
-- `ActualEnduringTask`, `EnduringTask`
+**Erlaubte Meta-Model-Elemente (28):**
+- `AchievedEffect` (auf Dependency)
+- `Achiever` (auf Object)
+- `ActualEnterprisePhase` (auf Object)
+- `ActualOrganization` (auf Object)
+- `ActualOrganizationalResource` (auf Object) (abstrakt 🔒)
+- `ActualPerson` (auf Object)
+- `ActualPost` (auf Object)
+- `ActualResource` (auf Object)
+- `ActualResponsibleResource` (auf Object) (abstrakt 🔒)
+- `ActualState` (auf Object) (abstrakt 🔒)
+- `Capability` (auf Class)
+- `CapabilityConfiguration` (auf Class)
+- `CapableElement` (auf CapableElement) (abstrakt 🔒)
+- `DesiredEffect` (auf Dependency)
+- `Desirer` (auf Desirer) (abstrakt 🔒)
+- `Environment` (auf Class)
+- `EnvironmentalCondition` (auf Dependency)
+- `Exhibits` (auf Abstraction)
+- `FieldedCapability` (auf Object)
+- `Organization` (auf Class)
+- `Person` (auf Class)
+- `Post` (auf Class)
+- `RealizedDesiredEffect` (auf Dependency)
+- `RealizingAchievedEffect` (auf Dependency)
+- `Satisfy` (auf Dependency)
+- `ServiceSpecification` (auf Class)
+- `StandardOperationalActivity` (auf Activity)
+- `StrategicConstraint` (auf Class)
 
 ### C7 – Performance Parameters
-**Erlaubte Elemente:**
-- `Measurement` (auf Class)
+**Erlaubte Meta-Model-Elemente (6):**
+- `Capability` (auf Class)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `Measurement` (auf Part)
 - `MeasurementType` (auf Class)
-- `MeasurableElement` (abstrakt)
-- `OwnsMeasurement`
-- `ActualMeasurementSet`, `OwnsActualMeasurementSet`
+- `OwnsMeasurement` (auf Dependency)
+- `PropertySet` (auf PropertySet) (abstrakt 🔒)
 
-### C8 – Planning Assumptions
-**Erlaubte Elemente:**
-- `ActualEnterprisePhase` (auf Object)
-- `EnterpriseGoal` (auf Class)
-- `Forecast` (auf Dependency)
-- `ForecastPeriod` (auf Dependency)
-- `SubjectOfForecast` (abstrakt)
+### C8 – Planning Assumption
+**Erlaubte Meta-Model-Elemente (9):**
+- `Capability` (auf Class)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `JustifiedBy` (auf Dependency)
+- `OperationalConstraint` (auf Class)
+- `Reference` (auf Class)
+- `ResourceConstraint` (auf Class)
+- `Satisfy` (auf Dependency)
+- `ServicePolicy` (auf Class)
+- `StrategicConstraint` (auf Class)
 
 ### Cr – Capability Roadmap
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (26):**
+- `ActualProject` (auf Object)
+- `ActualProjectDependency` (auf Dependency)
+- `ActualProjectMilestone` (auf Object)
+- `ActualResource` (auf Object)
+- `ActualResourceNeededByActualProjectMilestone` (auf Dependency)
+- `ActualResourceToActualProjectMilestone` (auf Dependency)
 - `Capability` (auf Class)
-- `ActualEnterprisePhase` (auf Object)
-- `Project` (abstrakt — siehe `ActualProject`)
-- `ActualProjectMilestone`, `CapabilityConfiguration`
+- `CapabilityConfiguration` (auf Class)
+- `CapableElement` (auf CapableElement) (abstrakt 🔒)
+- `Environment` (auf Class)
+- `EnvironmentalCondition` (auf Dependency)
+- `Exhibits` (auf Abstraction)
+- `FieldedCapability` (auf Object)
+- `MilestoneDependency` (auf Dependency)
+- `OwnedMilestone` (auf Dependency)
+- `Project` (auf Class)
+- `ProjectMilestoneRole` (auf Part)
+- `ProjectMilestoneToProjectTheme` (auf Dependency)
+- `ProjectSequence` (auf Dependency)
+- `ProjectTheme` (auf Part)
+- `RequiredResource` (auf Dependency)
+- `ResourceArchitecture` (auf Class)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `VersionReleased` (auf Dependency)
+- `VersionWithdrawn` (auf Dependency)
+- `VersionedElement` (auf VersionedElement) (abstrakt 🔒)
 
 ---
 
-## Service Specification Viewpoints
+## 🔌 Service Specification Viewpoints
 
 ### S1 – Service Taxonomy
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (8):**
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `PropertySet` (auf PropertySet) (abstrakt 🔒)
+- `Satisfy` (auf Dependency)
+- `ServiceClassification` (auf Dependency)
+- `ServicePolicy` (auf Class)
 - `ServiceSpecification` (auf Class)
 - `ServiceSpecificationGeneralization` (auf Generalization)
-- `ServiceSpecificationRole` (auf Part)
-- `ServiceClassification` — verbindet ServiceSpecification→ServiceSpecificationRole
 
 ### S2 – Service Structure
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (15):**
+- `IsAccountableFor` (auf Dependency)
+- `IsCapableToPerform` (auf Abstraction)
+- `IsResponsibleFor` (auf Dependency)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `Organization` (auf Class)
+- `ProvidesServiceFunction` (auf Dependency)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ServiceDependency` (auf Dependency)
+- `ServiceFunction` (auf Activity) (abstrakt 🔒)
+- `ServiceInterface` (auf Class)
+- `ServiceMethod` (auf Operation)
+- `ServiceParameter` (auf Parameter)
+- `ServicePort` (auf Port)
 - `ServiceSpecification` (auf Class)
 - `ServiceSpecificationRole` (auf Part)
-- `ServiceFunction` (abstrakt)
-- `ServiceDependency` (auf Dependency)
 
 ### S3 – Service Interfaces
-**Erlaubte Elemente:**
-- `ServiceInterface` (auf Class)
-- `ServicePort` (auf Port)
+**Erlaubte Meta-Model-Elemente (8):**
+- `Satisfy` (auf Dependency)
 - `ServiceConnector` (auf InformationFlow)
-- `ServiceMessage` (auf Message)
+- `ServiceInterface` (auf Class)
+- `ServiceMethod` (auf Operation)
 - `ServiceParameter` (auf Parameter)
+- `ServicePolicy` (auf Class)
+- `ServicePort` (auf Port)
+- `ServiceSpecification` (auf Class)
 
 ### S4 – Service Functions
-**Erlaubte Elemente:**
-- `ServiceFunction` (auf Activity)
+**Erlaubte Meta-Model-Elemente (10):**
+- `IsCapableToPerform` (auf Abstraction)
+- `PerformsInContext` (auf Abstraction)
+- `Satisfy` (auf Dependency)
+- `ServiceFunction` (auf Activity) (abstrakt 🔒)
 - `ServiceFunctionAction` (auf Action)
 - `ServiceMethod` (auf Operation)
 - `ServiceParameter` (auf Parameter)
-
-### S5 – Service States
-**Erlaubte Elemente:**
-- `ServiceSpecification` (auf Class)
-- `ServiceStateDescription` (auf StateMachine)
-
-### S6 – Service Interactions
-**Erlaubte Elemente:**
-- `ServiceInterface`, `ServicePort`, `ServiceConnector`
-- `ServiceMessage` (auf Message)
-- `ServiceFunction` (abstrakt)
-- `ServiceMethod` (auf Operation)
-
-### S7 – Service Interface Parameters
-**Erlaubte Elemente:**
-- `ServiceParameter` (auf Parameter)
-- `ServiceInterface` (auf Class)
-- `ServicePort` (auf Port)
-
-### S8 – Service Policy
-**Erlaubte Elemente:**
 - `ServicePolicy` (auf Class)
 - `ServiceSpecification` (auf Class)
-- `SecurityConstraint` (auf Constraint)
+- `ServiceSpecificationRole` (auf Part)
+
+### S5 – Service States
+**Erlaubte Meta-Model-Elemente (3):**
+- `ServiceSpecification` (auf Class)
+- `ServiceStateDescription` (auf StateMachine)
+- `StateDescription` (auf StateMachine) (abstrakt 🔒)
+
+### S6 – Service Interactions
+**Erlaubte Meta-Model-Elemente (12):**
+- `InteractionRole` (auf Lifeline) (abstrakt 🔒)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalExchange` (auf InformationFlow)
+- `OperationalMessage` (auf Message)
+- `OperationalRole` (auf Part)
+- `ResourceExchange` (auf InformationFlow)
+- `ResourceMessage` (auf Message)
+- `ResourceRole` (auf Part)
+- `ServiceMessage` (auf Message)
+- `ServiceMethod` (auf Operation)
+- `ServiceSpecification` (auf Class)
+- `ServiceSpecificationRole` (auf Part)
+
+### S7 – Service Interface Parameters
+**Erlaubte Meta-Model-Elemente (6):**
+- `ProvidesServiceFunction` (auf Dependency)
+- `ServiceFunction` (auf Activity) (abstrakt 🔒)
+- `ServiceInterface` (auf Class)
+- `ServiceMethod` (auf Operation)
+- `ServiceParameter` (auf Parameter)
+- `ServiceSpecification` (auf Class)
+
+### S8 – Service Policy
+**Erlaubte Meta-Model-Elemente (7):**
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `OperationalConstraint` (auf Class)
+- `ResourceConstraint` (auf Class)
+- `Satisfy` (auf Dependency)
+- `ServicePolicy` (auf Class)
+- `ServiceSpecification` (auf Class)
+- `StrategicConstraint` (auf Class)
 
 ### Sr – Service Roadmap
-**Erlaubte Elemente:**
-- `ServiceSpecification`, `ActualEnterprisePhase`, `ActualProjectMilestone`
+**Erlaubte Meta-Model-Elemente (25):**
+- `ActualProject` (auf Object)
+- `ActualProjectDependency` (auf Dependency)
+- `ActualProjectMilestone` (auf Object)
+- `ActualService` (auf Object)
+- `IsAccountableFor` (auf Dependency)
+- `IsResponsibleFor` (auf Dependency)
+- `MilestoneDependency` (auf Dependency)
+- `NeedsService` (auf Dependency)
+- `Organization` (auf Class)
+- `OwnedMilestone` (auf Dependency)
+- `Project` (auf Class)
+- `ProjectMilestone` (auf Class)
+- `ProjectMilestoneRole` (auf Part)
+- `ProjectMilestoneToProjectTheme` (auf Dependency)
+- `ProjectSequence` (auf Dependency)
+- `ProjectTheme` (auf Part)
+- `ProvidedServiceLevel` (auf Object)
+- `RequiredResource` (auf Dependency)
+- `RequiredServiceLevel` (auf Object)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ServiceSpecification` (auf Class)
+- `ServiceSpecificationRole` (auf Part)
+- `VersionReleased` (auf Dependency)
+- `VersionWithdrawn` (auf Dependency)
+- `VersionedElement` (auf VersionedElement) (abstrakt 🔒)
 
 ### C1-S1 – Capability to Service Mapping
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (6):**
 - `Capability` (auf Class)
+- `CapableElement` (auf CapableElement) (abstrakt 🔒)
+- `Environment` (auf Class)
+- `EnvironmentalCondition` (auf Dependency)
+- `Exhibits` (auf Abstraction)
 - `ServiceSpecification` (auf Class)
-- `ServiceProvision` — verbindet Capability→ServiceSpecification
 
 ---
 
-## Logical Specification Viewpoints
+## 🧠 Logical Specification Viewpoints
 
 ### L1 – Node Types
-**Erlaubte Elemente:**
-- `OperationalAgent` (abstrakt — verwende Subtypen)
-- `OperationalNode` / `OpNode` (auf Class)
-- `OperationalPort` (auf Port)
-- `OperationalConnector` (auf Connector)
-- `Location` (auf DataType)
-- `OpNodeGeneralization` (auf Generalization)
+**Erlaubte Meta-Model-Elemente (26):**
+- `Asset` (auf Class) (abstrakt 🔒)
+- `BusinessProcess` (auf Activity) (abstrakt 🔒)
+- `Capability` (auf Class)
+- `CapableElement` (auf CapableElement) (abstrakt 🔒)
+- `Environment` (auf Class)
+- `EnvironmentalCondition` (auf Dependency)
+- `Exhibits` (auf Abstraction)
+- `IsCapableToPerform` (auf Abstraction)
+- `JustifiedBy` (auf Dependency)
+- `MapsToCapability` (auf Abstraction)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `OperationalActivity` (auf Activity)
+- `OperationalActivityAction` (auf Action, Activity)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalAsset` (auf Class) (abstrakt 🔒)
+- `OperationalConstraint` (auf Class)
+- `OperationalPerformer` (auf Class)
+- `OperationalRole` (auf Part)
+- `OwnsMeasurement` (auf Dependency)
+- `PerformsInContext` (auf Abstraction)
+- `PropertySet` (auf PropertySet) (abstrakt 🔒)
+- `Reference` (auf Class)
+- `Satisfy` (auf Dependency)
+- `SubjectOfOperationalConstraint` (auf SubjectOfOperationalConstraint) (abstrakt 🔒)
 
 ### L2 – Logical Scenario
-**Erlaubte Elemente:**
-- `HighLevelOperationalConcept` (auf Class)
-- `ConceptItem` (abstrakt) — NICHT direkt verwenden
-- `ConceptRole` (auf Part) — Verwendung eines ConceptItem
-- `OperationalAgent` (abstrakt)
+**Erlaubte Meta-Model-Elemente (34):**
+- `ActualEnvironment` (auf Object)
 - `ActualLocation` (auf Object)
-- `OperationalActivity` (auf Activity)
-- `ArbitraryConnector` (auf Dependency) — nur für High-Level-Konzeptverbindungen
+- `Asset` (auf Class) (abstrakt 🔒)
+- `ConsumedBy` (auf Dependency)
+- `JustifiedBy` (auf Dependency)
+- `KnownResource` (auf Class)
+- `Location` (auf Class, DataType)
+- `LocationHolder` (auf LocationHolder) (abstrakt 🔒)
+- `LocationType` (auf Dependency)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalArchitecture` (auf Class)
+- `OperationalAsset` (auf Class) (abstrakt 🔒)
+- `OperationalConnector` (auf Connector)
+- `OperationalConstraint` (auf Class)
+- `OperationalExchange` (auf InformationFlow)
+- `OperationalExchangeItem` (auf OperationalExchangeItem) (abstrakt 🔒)
+- `OperationalInterface` (auf Class)
+- `OperationalPerformer` (auf Class)
+- `OperationalPort` (auf Port)
+- `OperationalRole` (auf Part)
+- `OwnsMeasurement` (auf Dependency)
+- `PhysicalLocation` (auf Dependency)
+- `ProblemDomain` (auf Part)
+- `PropertySet` (auf PropertySet) (abstrakt 🔒)
+- `Provides` (auf Dependency)
+- `Reference` (auf Class)
+- `RequiredEnvironment` (auf Dependency)
+- `Satisfy` (auf Dependency)
+- `ServiceSpecification` (auf Class)
+- `ServiceSpecificationRole` (auf Part)
+- `SubjectOfOperationalConstraint` (auf SubjectOfOperationalConstraint) (abstrakt 🔒)
 
-### L3 – Node Interactions
-**Erlaubte Elemente:**
-- `OperationalNode`, `OperationalAgent`
-- `OperationalConnector` / `Needline` (auf Connector)
-- `OperationalExchange` (auf InformationFlow) — Fluss über Needline
-- `InformationElement` (auf Class) — das, was ausgetauscht wird
-- `ConveyedItem` — verknüpft Exchange mit InformationElement
+### L3 – Node Interaction
+**Erlaubte Meta-Model-Elemente (28):**
+- `ConsumedBy` (auf Dependency)
+- `IsCapableToPerform` (auf Abstraction)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `OperationalActivity` (auf Activity)
+- `OperationalActivityAction` (auf Action, Activity)
+- `OperationalActivityEdge` (auf OperationalActivityEdge)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalArchitecture` (auf Class)
+- `OperationalConnector` (auf Connector)
+- `OperationalConstraint` (auf Class)
+- `OperationalControlFlow` (auf ControlFlow)
+- `OperationalExchange` (auf InformationFlow)
+- `OperationalExchangeItem` (auf OperationalExchangeItem) (abstrakt 🔒)
+- `OperationalInterface` (auf Class)
+- `OperationalObjectFlow` (auf ObjectFlow)
+- `OperationalPerformer` (auf Class)
+- `OperationalPort` (auf Port)
+- `OperationalRole` (auf Part)
+- `OwnsMeasurement` (auf Dependency)
+- `PerformsInContext` (auf Abstraction)
+- `ProblemDomain` (auf Part)
+- `Provides` (auf Dependency)
+- `Satisfy` (auf Dependency)
+- `ServiceSpecification` (auf Class)
+- `ServiceSpecificationRole` (auf Part)
+- `SubjectOfOperationalConstraint` (auf SubjectOfOperationalConstraint) (abstrakt 🔒)
 
 ### L4 – Logical Activities
-**Erlaubte Elemente:**
-- `OperationalActivity` (auf Activity)
-- `StandardOperationalActivity` (auf Activity)
-- `OperationalActivityAction` (auf Action) — Aufruf einer Activity in einer anderen
-- `OperationalControlFlow` (auf ControlFlow)
-- `OperationalObjectFlow` (auf ObjectFlow)
-- `OperationalMessageFlow` (auf ControlFlow)
-- `OperationalAgent` (abstrakt) — wer führt aus
+**Erlaubte Meta-Model-Elemente (34):**
 - `ActivityPerformableUnderCondition` (auf Dependency)
-- `ActsUpon` (auf Dependency) — Activity wirkt auf etwas
-- `OperationalConstraint` (auf Constraint)
+- `ActivitySupportsService` (auf Realisation)
+- `ActsUpon` (auf Dependency)
+- `ActualCondition` (auf Object)
+- `ActualService` (auf Object)
+- `AffectedActivity` (auf Dependency)
+- `AffectedResource` (auf Dependency)
+- `BusinessProcess` (auf Activity) (abstrakt 🔒)
+- `Consumes` (auf Abstraction)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `IsCapableToPerform` (auf Abstraction)
+- `JustifiedBy` (auf Dependency)
+- `OperationalActivity` (auf Activity)
+- `OperationalActivityAction` (auf Action, Activity)
+- `OperationalActivityEdge` (auf OperationalActivityEdge)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalConstraint` (auf Class)
+- `OperationalControlFlow` (auf ControlFlow)
+- `OperationalExchange` (auf InformationFlow)
+- `OperationalExchangeItem` (auf OperationalExchangeItem) (abstrakt 🔒)
+- `OperationalMessageFlow` (auf ControlFlow)
+- `OperationalObjectFlow` (auf ObjectFlow)
+- `OperationalParameter` (auf Parameter)
+- `OperationalPerformer` (auf Class)
+- `OperationalRole` (auf Part)
+- `PaperForm` (auf Class)
+- `PerformsInContext` (auf Abstraction)
+- `ProcessParameter` (auf ProcessParameter) (abstrakt 🔒)
+- `Reference` (auf Class)
+- `RequiredServiceLevel` (auf Object)
+- `Satisfy` (auf Dependency)
+- `ServiceSpecification` (auf Class)
+- `StandardOperationalActivity` (auf Activity)
+- `SubjectOfOperationalConstraint` (auf SubjectOfOperationalConstraint) (abstrakt 🔒)
 
 ### L5 – Logical States
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (5):**
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalArchitecture` (auf Class)
+- `OperationalPerformer` (auf Class)
 - `OperationalStateDescription` (auf Class)
-- `OperationalAgent` (abstrakt)
-- `ActualState` (abstrakt)
+- `StateDescription` (auf StateMachine) (abstrakt 🔒)
 
 ### L6 – Logical Sequence
-**Erlaubte Elemente:**
-- `OperationalAgent` (abstrakt)
-- `OperationalActivity`, `StandardOperationalActivity`
+**Erlaubte Meta-Model-Elemente (13):**
+- `BusinessProcess` (auf Activity) (abstrakt 🔒)
+- `Exchange` (auf Exchange) (abstrakt 🔒)
+- `InteractionMessage` (auf Message) (abstrakt 🔒)
+- `InteractionRole` (auf Lifeline) (abstrakt 🔒)
+- `OperationalActivity` (auf Activity)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
 - `OperationalExchange` (auf InformationFlow)
-- `InteractionRole`, `InteractionMessage` (alle abstrakt)
+- `OperationalMessage` (auf Message)
+- `OperationalMethod` (auf Operation)
+- `OperationalRole` (auf Part)
+- `ProcessOperation` (auf ProcessOperation) (abstrakt 🔒)
+- `ServiceSpecification` (auf Class)
+- `ServiceSpecificationRole` (auf Part)
 
 ### L7 – Information Model
-**Erlaubte Elemente:**
-- `InformationElement` (auf Class)
+**Erlaubte Meta-Model-Elemente (17):**
+- `AssetRole` (auf Part) (abstrakt 🔒)
+- `Classification` (auf Class)
+- `Classified` (auf Dependency)
 - `DataElement` (auf Class)
-- `InformationElementGeneralization` (auf Generalization)
-- `InformationElementComposition` (auf Aggregation)
+- `DataModel` (auf Package)
+- `DataRole` (auf Part)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `InformationElement` (auf Class)
+- `InformationRole` (auf Part)
+- `JustifiedBy` (auf Dependency)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `OperationalAsset` (auf Class) (abstrakt 🔒)
+- `OperationalConstraint` (auf Class)
+- `Reference` (auf Class)
+- `ResourceAsset` (auf Class) (abstrakt 🔒)
+- `Satisfy` (auf Dependency)
+- `SubjectOfOperationalConstraint` (auf SubjectOfOperationalConstraint) (abstrakt 🔒)
 
 ### L8 – Logical Constraints
-**Erlaubte Elemente:**
-- `OperationalConstraint` (auf Constraint)
-- `SubjectOfOperationalConstraint` (abstrakt)
-- `Rule` (abstrakt) — verwende `OperationalConstraint`
+**Erlaubte Meta-Model-Elemente (16):**
+- `DataModel` (auf Package)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `InformationElement` (auf Class)
+- `JustifiedBy` (auf Dependency)
+- `OperationalActivity` (auf Activity)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalArchitecture` (auf Class)
+- `OperationalConstraint` (auf Class)
+- `OperationalExchange` (auf InformationFlow)
+- `OperationalPerformer` (auf Class)
+- `Reference` (auf Class)
+- `ResourceConstraint` (auf Class)
+- `Satisfy` (auf Dependency)
+- `ServicePolicy` (auf Class)
+- `StrategicConstraint` (auf Class)
+- `SubjectOfOperationalConstraint` (auf SubjectOfOperationalConstraint) (abstrakt 🔒)
 
 ### Lr – Lines of Development
-**Erlaubte Elemente:**
-- `ActualEnterprisePhase`, `OperationalAgent`, `ActualProject`
+**Erlaubte Meta-Model-Elemente (28):**
+- `ActualProject` (auf Object)
+- `ActualProjectConsults` (auf Dependency)
+- `ActualProjectDependency` (auf Dependency)
+- `ActualProjectInforms` (auf Dependency)
+- `ActualProjectMilestone` (auf Object)
+- `ArchitecturalDescription` (auf Package)
+- `ArchitectureForProject` (auf Dependency)
+- `IsAccountableFor` (auf Dependency)
+- `IsResponsibleFor` (auf Dependency)
+- `JustifiedBy` (auf Dependency)
+- `MilestoneDependency` (auf Dependency)
+- `OperationalConstraint` (auf Class)
+- `Organization` (auf Class)
+- `OwnedMilestone` (auf Dependency)
+- `Project` (auf Class)
+- `ProjectMilestone` (auf Class)
+- `ProjectMilestoneRole` (auf Part)
+- `ProjectMilestoneToProjectTheme` (auf Dependency)
+- `ProjectSequence` (auf Dependency)
+- `ProjectTheme` (auf Part)
+- `Reference` (auf Class)
+- `RequiredResource` (auf Dependency)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `Satisfy` (auf Dependency)
+- `SubjectOfOperationalConstraint` (auf SubjectOfOperationalConstraint) (abstrakt 🔒)
+- `VersionReleased` (auf Dependency)
+- `VersionWithdrawn` (auf Dependency)
+- `VersionedElement` (auf VersionedElement) (abstrakt 🔒)
 
 ### L2-L3 – Logical Concept
-**Erlaubte Elemente:**
-- Kombination aus L2- und L3-Elementen
+**Erlaubte Meta-Model-Elemente (25):**
+- `ArbitraryConnector` (auf Dependency)
+- `Asset` (auf Class) (abstrakt 🔒)
+- `CapabilityConfiguration` (auf Class)
+- `ConceptItem` (auf ConceptItem) (abstrakt 🔒)
+- `ConceptRole` (auf Part)
+- `DataElement` (auf Class)
+- `HighLevelOperationalConcept` (auf Class)
+- `InformationElement` (auf Class)
+- `Location` (auf Class, DataType)
+- `NaturalResource` (auf Class)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalArchitecture` (auf Class)
+- `OperationalAsset` (auf Class) (abstrakt 🔒)
+- `OperationalPerformer` (auf Class)
+- `Organization` (auf Class)
+- `OrganizationalResource` (auf Class) (abstrakt 🔒)
+- `Person` (auf Class)
+- `PhysicalResource` (auf Class) (abstrakt 🔒)
+- `Post` (auf Class)
+- `ResourceArchitecture` (auf Class)
+- `ResourceArtifact` (auf Class)
+- `ResourceAsset` (auf Class) (abstrakt 🔒)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `Software` (auf Class)
+- `System` (auf Class)
 
 ---
 
-## Physical Resource Viewpoints
+## 🖥️ Physical Resource Viewpoints
 
 ### P1 – Resource Types
-**Erlaubte Elemente:**
-- `ResourcePerformer` (abstrakt) — verwende: `System`, `Software`, `Technology`, `ResourceArtifact`, `ActualOrganization`, `ActualPerson`, `ActualPost`
-- `ResourceRole` (auf Part)
-- `TypicalResource` — verbindet ResourcePerformer→CapabilityConfiguration
+**Erlaubte Meta-Model-Elemente (46):**
+- `ActualEnterprisePhase` (auf Object)
+- `ActualResource` (auf Object)
+- `ActualService` (auf Object)
+- `Asset` (auf Class) (abstrakt 🔒)
+- `CapabilityConfiguration` (auf Class)
+- `CapableElement` (auf CapableElement) (abstrakt 🔒)
+- `Competence` (auf Class)
+- `DataElement` (auf Class)
+- `DataElementStoredIn` (auf Dependency)
+- `Energy` (auf Class)
+- `Forecast` (auf Dependency)
+- `ForecastPeriod` (auf Dependency)
+- `FormStoredIn` (auf Dependency)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `NaturalResource` (auf Class)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalArchitecture` (auf Class)
+- `OperationalPerformer` (auf Class)
+- `OperationalRole` (auf Part)
+- `Organization` (auf Class)
+- `OrganizationalResource` (auf Class) (abstrakt 🔒)
+- `OwnsMeasurement` (auf Dependency)
+- `PaperForm` (auf Class)
+- `Person` (auf Class)
+- `PhysicalResource` (auf Class) (abstrakt 🔒)
+- `Post` (auf Class)
+- `PropertySet` (auf PropertySet) (abstrakt 🔒)
+- `RequiresCompetence` (auf Abstraction)
+- `ResourceArchitecture` (auf Class)
+- `ResourceArtifact` (auf Class)
+- `ResourceAsset` (auf Class) (abstrakt 🔒)
+- `ResourceConstraint` (auf Class)
+- `ResourceInterface` (auf Class)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `Satisfy` (auf Dependency)
+- `ServiceInterface` (auf Class)
+- `ServiceProvision` (auf Abstraction)
+- `ServiceSpecification` (auf Class)
+- `Software` (auf Class)
+- `StandardOperationalActivity` (auf Activity)
+- `SubjectOfForecast` (auf Class) (abstrakt 🔒)
+- `SubjectOfResourceConstraint` (auf SubjectOfResourceConstraint) (abstrakt 🔒)
+- `System` (auf Class)
 
 ### P2 – Resource Structure
-**Erlaubte Elemente:**
-- `ResourcePerformer` (abstrakt)
-- `ResourceArtifact`, `Software`, `Technology`, `System`
-- `ResourceRole` (auf Part)
-- `ResourcePort` (auf Port)
-- `ResourceConnector` (auf Connector)
-- `ActualOrganization`, `ActualPerson`, `ActualPost`
+**Erlaubte Meta-Model-Elemente (57):**
+- `ActualEnvironment` (auf Object)
+- `ActualLocation` (auf Object)
+- `ActualProject` (auf Object)
+- `ActualProjectConsults` (auf Dependency)
+- `ActualProjectInforms` (auf Dependency)
 - `CapabilityConfiguration` (auf Class)
+- `Command` (auf InformationFlow)
+- `Competence` (auf Class)
+- `CompetenceForRole` (auf Dependency)
+- `Control` (auf InformationFlow)
+- `DataElement` (auf Class)
+- `Energy` (auf Class)
+- `Function` (auf Activity)
+- `GeoPoliticalExtentType` (auf DataType)
+- `HostedOn` (auf Dependency)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `IsAccountableFor` (auf Dependency)
+- `IsResponsibleFor` (auf Dependency)
+- `Location` (auf Class, DataType)
+- `LocationHolder` (auf LocationHolder) (abstrakt 🔒)
+- `LocationType` (auf Dependency)
+- `NaturalResource` (auf Class)
+- `NeedsModificationOf` (auf Dependency)
+- `NeedsResource` (auf Dependency)
+- `OperationalActivity` (auf Activity)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `OperationalArchitecture` (auf Class)
+- `OperationalPerformer` (auf Class)
+- `OperationalRole` (auf Part)
+- `Organization` (auf Class)
+- `OrganizationalResource` (auf Class) (abstrakt 🔒)
+- `Person` (auf Class)
+- `PhysicalLocation` (auf Dependency)
+- `PhysicalResource` (auf Class) (abstrakt 🔒)
+- `Post` (auf Class)
+- `PostRole` (auf Part)
+- `ProjectProvidesFunction` (auf Dependency)
+- `ProjectSupportActivity` (auf Dependency)
+- `RequiredEnvironment` (auf Dependency)
+- `ResourceArchitecture` (auf Class)
+- `ResourceArtifact` (auf Class)
+- `ResourceConstraint` (auf Class)
+- `ResourceDependency` (auf Dependency)
+- `ResourceExchange` (auf InformationFlow)
+- `ResourceExchangeItem` (auf ResourceExchangeItem) (abstrakt 🔒)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ResourceRole` (auf Part)
+- `ResourceToServiceDependency` (auf Dependency)
+- `Responsible` (auf Dependency)
+- `Satisfy` (auf Dependency)
+- `ServiceProvision` (auf Abstraction)
+- `ServiceSpecification` (auf Class)
+- `ServiceSpecificationRole` (auf Part)
+- `Software` (auf Class)
+- `SubOrganization` (auf Part)
+- `SubjectOfResourceConstraint` (auf SubjectOfResourceConstraint) (abstrakt 🔒)
+- `System` (auf Class)
 
 ### P3 – Resource Connectivity
-**Erlaubte Elemente:**
-- `ResourcePerformer` Subtypen
-- `ResourcePort` (auf Port)
-- `ResourceConnector` (auf Connector)
-- `ResourceExchange` (auf InformationFlow)
-- `ResourceExchangeItem` (abstrakt)
+**Erlaubte Meta-Model-Elemente (22):**
+- `Control` (auf InformationFlow)
+- `ImplementsProtocol` (auf Dependency)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `OwnsMeasurement` (auf Dependency)
+- `PhysicalResource` (auf Class) (abstrakt 🔒)
+- `PropertySet` (auf PropertySet) (abstrakt 🔒)
 - `Protocol` (auf Class)
+- `ProtocolImplementation` (auf ProtocolImplementation) (abstrakt 🔒)
 - `ProtocolLayer` (auf Part)
+- `Protocolstack` (auf Class)
+- `ResourceConnector` (auf Connector)
+- `ResourceConstraint` (auf Class)
+- `ResourceExchange` (auf InformationFlow)
+- `ResourceExchangeItem` (auf ResourceExchangeItem) (abstrakt 🔒)
+- `ResourceInterface` (auf Class)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ResourcePort` (auf Port)
 - `ResourceRole` (auf Part)
+- `Satisfy` (auf Dependency)
+- `SubjectOfResourceConstraint` (auf SubjectOfResourceConstraint) (abstrakt 🔒)
 
 ### P4 – Resource Functions
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (25):**
+- `AffectedFunctions` (auf Dependency)
+- `DataElement` (auf Class)
 - `Function` (auf Activity)
 - `FunctionAction` (auf Action)
 - `FunctionControlFlow` (auf ControlFlow)
+- `FunctionEdge` (auf FunctionEdge)
 - `FunctionObjectFlow` (auf ObjectFlow)
-- `ResourcePerformer` Subtypen
+- `FunctionSubject` (auf Dependency)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `IsCapableToPerform` (auf Abstraction)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `OperationalActivity` (auf Activity)
+- `OwnsMeasurement` (auf Dependency)
+- `PerformsInContext` (auf Abstraction)
+- `ResourceConstraint` (auf Class)
+- `ResourceExchange` (auf InformationFlow)
+- `ResourceExchangeItem` (auf ResourceExchangeItem) (abstrakt 🔒)
 - `ResourceMethod` (auf Operation)
+- `ResourceParameter` (auf Parameter)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ResourceRole` (auf Part)
+- `Satisfy` (auf Dependency)
+- `SubjectOfResourceConstraint` (auf SubjectOfResourceConstraint) (abstrakt 🔒)
 
 ### P5 – Resource States
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (3):**
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
 - `ResourceStateDescription` (auf StateMachine)
-- `ResourcePerformer` Subtypen
+- `StateDescription` (auf StateMachine) (abstrakt 🔒)
 
 ### P6 – Resource Sequence
-**Erlaubte Elemente:**
-- `ResourcePerformer` Subtypen
+**Erlaubte Meta-Model-Elemente (10):**
+- `Function` (auf Activity)
+- `InteractionMessage` (auf Message) (abstrakt 🔒)
+- `InteractionRole` (auf Lifeline) (abstrakt 🔒)
 - `ResourceExchange` (auf InformationFlow)
+- `ResourceExchangeItem` (auf ResourceExchangeItem) (abstrakt 🔒)
 - `ResourceMessage` (auf Message)
 - `ResourceMethod` (auf Operation)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ResourceRole` (auf Part)
+- `ServiceSpecificationRole` (auf Part)
 
 ### P7 – Data Model
-**Erlaubte Elemente:**
-- `DataModel` (auf Package)
+**Erlaubte Meta-Model-Elemente (19):**
+- `AssetRole` (auf Part) (abstrakt 🔒)
+- `Classification` (auf Class)
+- `Classified` (auf Dependency)
 - `DataElement` (auf Class)
+- `DataModel` (auf Package)
 - `DataRole` (auf Part)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `InformationElement` (auf Class)
+- `InformationRole` (auf Part)
+- `JustifiedBy` (auf Dependency)
+- `MeasurableElement` (auf MeasurableElement) (abstrakt 🔒)
+- `OperationalAsset` (auf Class) (abstrakt 🔒)
+- `OperationalConstraint` (auf Class)
+- `Reference` (auf Class)
+- `ResourceAsset` (auf Class) (abstrakt 🔒)
+- `ResourceConstraint` (auf Class)
+- `Satisfy` (auf Dependency)
+- `SubjectOfOperationalConstraint` (auf SubjectOfOperationalConstraint) (abstrakt 🔒)
+- `SubjectOfResourceConstraint` (auf SubjectOfResourceConstraint) (abstrakt 🔒)
 
 ### P8 – Resource Constraints
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (28):**
+- `ActualPerson` (auf Object)
+- `ActualPost` (auf Object)
+- `ActualResource` (auf Object)
+- `CapabilityConfiguration` (auf Class)
+- `DataElement` (auf Class)
+- `FillsPost` (auf Dependency)
+- `Function` (auf Activity)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `JustifiedBy` (auf Dependency)
+- `NaturalResource` (auf Class)
+- `OperationalConstraint` (auf Class)
+- `Organization` (auf Class)
+- `OrganizationalResource` (auf Class) (abstrakt 🔒)
+- `Person` (auf Class)
+- `PhysicalResource` (auf Class) (abstrakt 🔒)
+- `Post` (auf Class)
+- `Reference` (auf Class)
+- `ResourceArchitecture` (auf Class)
+- `ResourceArtifact` (auf Class)
 - `ResourceConstraint` (auf Class)
-- `SubjectOfResourceConstraint` (abstrakt)
-- `SecurityConstraint` (auf Constraint)
-- `ResourceMitigation` (auf Class)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ResourceRole` (auf Part)
+- `Satisfy` (auf Dependency)
+- `ServicePolicy` (auf Class)
+- `Software` (auf Class)
+- `StrategicConstraint` (auf Class)
+- `SubjectOfResourceConstraint` (auf SubjectOfResourceConstraint) (abstrakt 🔒)
+- `System` (auf Class)
 
 ### Pr – Configuration Management
-**Erlaubte Elemente:**
-- `ActualProject`, `ResourcePerformer` Subtypen, `CapabilityConfiguration`
+**Erlaubte Meta-Model-Elemente (22):**
+- `ActualProject` (auf Object)
+- `ActualProjectDependency` (auf Dependency)
+- `ActualProjectMilestone` (auf Object)
+- `MilestoneDependency` (auf Dependency)
+- `OwnedMilestone` (auf Dependency)
+- `Project` (auf Class)
+- `ProjectMilestone` (auf Class)
+- `ProjectMilestoneRole` (auf Part)
+- `ProjectMilestoneToProjectTheme` (auf Dependency)
+- `ProjectSequence` (auf Dependency)
+- `ProjectTheme` (auf Part)
+- `RequiredResource` (auf Dependency)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ServiceSpecification` (auf Class)
+- `Standard` (auf Class)
+- `SuccessorOf` (auf Dependency)
+- `VersionOfConfiguration` (auf Part)
+- `VersionReleased` (auf Dependency)
+- `VersionSuccession` (auf Dependency)
+- `VersionWithdrawn` (auf Dependency)
+- `VersionedElement` (auf VersionedElement) (abstrakt 🔒)
+- `WholeLifeConfiguration` (auf Class)
 
 ### L4-P4 – Activity to Function Mapping
-**Erlaubte Elemente:**
-- `OperationalActivity` → `Function` (Mapping)
-- `MapsToCapability` — verbindet Activity→Capability
+**Erlaubte Meta-Model-Elemente (9):**
+- `Function` (auf Activity)
+- `Implements` (auf Abstraction) (abstrakt 🔒)
+- `IsCapableToPerform` (auf Abstraction)
+- `OperationalActivity` (auf Activity)
+- `OperationalAgent` (auf Class) (abstrakt 🔒)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ServiceFunction` (auf Activity) (abstrakt 🔒)
+- `ServiceMethod` (auf Operation)
+- `ServiceSpecification` (auf Class)
 
 ---
 
-## Architecture Foundation
+## 📐 Architecture Foundation
 
 ### A1 – Meta-Data Definitions
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (11):**
+- `ActualProject` (auf Object)
+- `ActualProjectMilestone` (auf Object)
 - `ArchitecturalDescription` (auf Package)
-- `Metadata` (auf Note)
+- `Architecture` (auf Class) (abstrakt 🔒)
+- `ArchitectureForProject` (auf Dependency)
 - `ArchitectureMetadata` (auf Note)
+- `Classification` (auf Class)
+- `Classified` (auf Dependency)
+- `DescribedBy` (auf Dependency)
+- `Expresses` (auf Dependency)
+- `Metadata` (auf Note)
 
 ### A2 – Architecture Products
-**Erlaubte Elemente:**
+**Erlaubte Meta-Model-Elemente (20):**
+- `ActualEnterprisePhase` (auf Object)
+- `ActualOrganizationalResource` (auf Object) (abstrakt 🔒)
+- `ArchitecturalDescription` (auf Package)
+- `ArchitectureMetadata` (auf Note)
+- `CompliesViewpoint` (auf Dependency)
+- `Concern` (auf Class)
+- `ConcernForActualEnterprisePhase` (auf Dependency)
+- `ConcernForView` (auf Dependency)
+- `ConcernForViewpoint` (auf Dependency)
+- `EnterprisePhase` (auf Class)
+- `Metadata` (auf Note)
+- `OrganizationalResource` (auf Class) (abstrakt 🔒)
+- `Stakeholder` (auf Stakeholder)
+- `StakeholderConcern` (auf Dependency)
 - `View` (auf Class)
 - `Viewpoint` (auf Class)
-- `ViewsInArchitecturalDescription`
-- `ViewpointsInArchitecturalDescription`
+- `ViewpointToStakeholder` (auf Dependency)
+- `ViewpointsInArchitecturalDescription` (auf Dependency)
+- `ViewsInArchitecturalDescription` (auf Dependency)
+- `WholeLifeEnterprise` (auf Class)
 
 ### A3 – Architecture Correspondence
-**Erlaubte Elemente:**
-- `ArchitecturalReference` — verbindet Elemente über Viewpoints hinweg
+**Erlaubte Meta-Model-Elemente (2):**
+- `ArchitecturalDescription` (auf Package)
+- `ArchitecturalReference` (auf Dependency)
 
 ### A4 – Methodology Used
-**Erlaubte Elemente:**
-- `ArchitecturalDescription` (auf Package) mit Tag `methodologyUsed`
+**Erlaubte Meta-Model-Elemente (1):**
+- `ArchitecturalDescription` (auf Package)
 
 ### A5 – Architecture Status
-**Erlaubte Elemente:**
-- `ArchitecturalDescription` (auf Package) mit Tag `status`
+**Erlaubte Meta-Model-Elemente (1):**
+- `ArchitecturalDescription` (auf Package)
 
 ### A6 – Architecture Versions
-**Erlaubte Elemente:**
-- `VersionOfConfiguration`, `VersionSuccession`, `VersionReleased`, `VersionWithdrawn`
-- `VersionedElement` (abstrakt)
+**Erlaubte Meta-Model-Elemente (2):**
+- `ArchitecturalDescription` (auf Package)
+- `ArchitecturalSequence` (auf Dependency)
 
 ### A7 – Architecture Compliance
-**Erlaubte Elemente:**
-- `CompliesViewpoint` — verbindet View→Viewpoint
-- `View`, `Viewpoint`
+**Erlaubte Meta-Model-Elemente (4):**
+- `Alias` (auf Note)
+- `Information` (auf Note)
+- `SameAs` (auf Dependency)
+- `UAFElement` (auf UAFElement) (abstrakt 🔒)
 
 ### A8 – Standards
-**Erlaubte Elemente:**
-- `Standard` (auf Class)
-- `RatifiedStandards`, `ConformsTo`
+**Erlaubte Meta-Model-Elemente (6):**
+- `ActualOrganization` (auf Object)
 - `Protocol` (auf Class)
-- `IsEquivalentToStandardElement`, `ReplaceStandardElement`
+- `ProtocolLayer` (auf Part)
+- `Protocolstack` (auf Class)
+- `RatifiedStandards` (auf Dependency)
+- `Standard` (auf Class)
 
 ### Ar – Architecture Roadmap
-**Erlaubte Elemente:**
-- `ArchitectureForProject`, `ActualEnterprisePhase`
+**Erlaubte Meta-Model-Elemente (2):**
+- `ArchitecturalDescription` (auf Package)
+- `ArchitecturalSequence` (auf Dependency)
 
 ---
 
-## Requirement Viewpoints
+## 📋 Requirement Viewpoints
 
 ### R2 – Requirement Catalogue
-**Erlaubte Elemente:**
-- `BWRequirement` (abstrakt) — verwende Subtypen
-- `FunctionalRequirement`, `NonfunctionalRequirement` (auf Requirement)
+**Erlaubte Meta-Model-Elemente (7):**
+- `BWRequirement` (auf Requirement) (abstrakt 🔒)
+- `FunctionalRequirement` (auf Requirement)
+- `NonfunctionalRequirement` (auf Requirement)
+- `PartOfCatalogue` (auf Aggregation)
+- `PartOfCategory` (auf Aggregation)
 - `RequirementCatalogue` (auf Class)
 - `RequirementCategory` (auf Class)
 
 ### R3 – Requirement Dependencies
-**Erlaubte Elemente:**
-- `Requires` — verbindet Requirement→Requirement
-- `ConflictsWith`, `Refines`, `DerivedFrom`
+**Erlaubte Meta-Model-Elemente (9):**
+- `BWRequirement` (auf Requirement) (abstrakt 🔒)
+- `ConflictsWith` (auf Dependency)
+- `FunctionalRequirement` (auf Requirement)
+- `IsDuplicateOf` (auf Dependency)
+- `NonfunctionalRequirement` (auf Requirement)
+- `Refines` (auf Dependency)
+- `Replaces` (auf Dependency)
+- `Requires` (auf Dependency)
+- `StemsFrom` (auf Dependency)
 
 ### R7 – Requirement Derivation
-**Erlaubte Elemente:**
-- `StemsFrom` — verbindet Requirement→Source
-- `JustifiedBy`, `ResultsFrom`
+**Erlaubte Meta-Model-Elemente (20):**
+- `BWRequirement` (auf Requirement) (abstrakt 🔒)
+- `DataElement` (auf Class)
+- `DerivedFrom` (auf Dependency)
+- `Function` (auf Activity)
+- `FunctionalRequirement` (auf Requirement)
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `NonfunctionalRequirement` (auf Requirement)
+- `Protocol` (auf Class)
+- `Protocolstack` (auf Class)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ResourcePort` (auf Port)
+- `ResourceRole` (auf Part)
+- `ServiceFunction` (auf Activity) (abstrakt 🔒)
+- `ServiceInterface` (auf Class)
+- `ServiceSpecification` (auf Class)
+- `ServiceSpecificationRole` (auf Part)
+- `Standard` (auf Class)
+- `ToBeRealizedBy` (auf Dependency)
+- `UAFElement` (auf UAFElement) (abstrakt 🔒)
 
 ### R8 – Requirement Fulfilment
-**Erlaubte Elemente:**
-- `RealiseRequirement` (auf Realisation) — verbindet Element→Requirement
-- `Satisfy` — verbindet Element→Requirement
-- `FulfilmentCriterion`, `FitCriterion`
+**Erlaubte Meta-Model-Elemente (7):**
+- `BWRequirement` (auf Requirement) (abstrakt 🔒)
+- `Checks` (auf Dependency)
+- `Evaluates` (auf Realisation)
+- `FitCriterion` (auf Class)
+- `FulfilmentCriterion` (auf Class)
+- `FunctionalRequirement` (auf Requirement)
+- `NonfunctionalRequirement` (auf Requirement)
 
 ### Rr – Requirement Realization
-**Erlaubte Elemente:**
-- `ToBeRealizedBy`, `RealizesRecommendation`, `RealizingAchievedEffect`
+**Erlaubte Meta-Model-Elemente (18):**
+- `BWRequirement` (auf Requirement) (abstrakt 🔒)
+- `DataElement` (auf Class)
+- `Function` (auf Activity)
+- `FunctionalRequirement` (auf Requirement)
+- `Measurement` (auf Part)
+- `MeasurementType` (auf Class)
+- `NonfunctionalRequirement` (auf Requirement)
+- `Protocol` (auf Class)
+- `Protocolstack` (auf Class)
+- `RealiseRequirement` (auf Realisation)
+- `ResourcePerformer` (auf Class) (abstrakt 🔒)
+- `ResourcePort` (auf Port)
+- `ResourceRole` (auf Part)
+- `ServiceFunction` (auf Activity) (abstrakt 🔒)
+- `ServiceInterface` (auf Class)
+- `ServiceSpecification` (auf Class)
+- `ServiceSpecificationRole` (auf Part)
+- `Standard` (auf Class)
+
+---
