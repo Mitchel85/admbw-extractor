@@ -13,6 +13,8 @@ Der **ADMBw-Extraktor** produziert bewusst **keine fertigen, importierbaren Arch
 
 Er dient ausschließlich der **Vorbereitung der Modellierung**: Das Tool extrahiert architekturrelevante Informationen aus Prosa und stellt sie übersichtlich im Chat oder als HTML-Artefakt dar. Dieser Output dient dem Architekten als **strukturierte Vorlage zum Ablesen und manuellen Nachmodellieren** im eigentlichen Werkzeug (z.B. Sparx Enterprise Architect). Die ID-Vergabe und finale semantische Validierung erfolgen zwingend dort.
 
+> 🔒 **Sicherheitshinweis:** Bitte zwingend auf den korrekten Umgang mit eingestuften Daten achten!
+
 ---
 
 ## 🧠 Das Kernkonzept: Warum ein iterativer Workflow?
