@@ -5,7 +5,7 @@
 ![Framework](https://img.shields.io/badge/Framework-NAFv4-orange)
 ![Plattform](https://img.shields.io/badge/Platform-OpenWebUI-purple)
 
-Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (maßgeschneidert für OpenWebUI), der architekturrelevante Fachtexte (Prosa) automatisch analysiert und in standardkonforme **ADMBw-NAFv4-Architekturmodelle** übersetzt. Er nutzt einen streng iterativen Prozess mit einem 7-fachen Double-Check, um höchste Modellierungsqualität und Regelkonformität zu garantieren.
+Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (maßgeschneidert für OpenWebUI), der architekturrelevante Fachtexte (Prosa) automatisch analysiert und als **strukturierte Vorlage für die ADMBw-NAFv4-Modellierung** aufbereitet. Er nutzt einen streng iterativen Prozess mit einem 7-fachen Double-Check, um höchste Modellierungsqualität und Regelkonformität zu garantieren.
 
 
 ### ⚠️ Wichtiger Hinweis zur Zielsetzung
