@@ -5,13 +5,10 @@
 ![Framework](https://img.shields.io/badge/Framework-NAFv4-orange)
 ![Plattform](https://img.shields.io/badge/Platform-OpenWebUI-purple)
 
-Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (maßgeschneidert für OpenWebUI), der architekturrelevante Fachtexte (Prosa) automatisch analysiert und als **strukturierte Vorlage für die ADMBw-NAFv4-Modellierung** aufbereitet. Er nutzt einen streng iterativen Prozess mit einem 7-fachen Double-Check, um höchste Modellierungsqualität und Regelkonformität zu garantieren.
-
+Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (maßgeschneidert für OpenWebUI), der architekturrelevante Fachtexte (Prosa) automatisch analysiert. Er nutzt einen streng iterativen Prozess mit einem 7-fachen Double-Check, um die extrahierten Informationen regelkonform aufzubereiten.
 
 ### ⚠️ Wichtiger Hinweis zur Zielsetzung
-Der **ADMBw-Extraktor** produziert bewusst **keine fertigen, importierbaren Architekturmodelle** (wie z.B. XMI). 
-
-Er dient ausschließlich der **Vorbereitung der Modellierung**: Das Tool extrahiert architekturrelevante Informationen aus Prosa und stellt sie übersichtlich im Chat oder als HTML-Artefakt dar. Dieser Output dient dem Architekten als **strukturierte Vorlage zum Ablesen und manuellen Nachmodellieren** im eigentlichen Werkzeug (z.B. Sparx Enterprise Architect). Die ID-Vergabe und finale semantische Validierung erfolgen zwingend dort.
+Der Extraktor produziert bewusst **keine fertigen, importierbaren Architekturmodelle** (wie z.B. XMI). Das Tool extrahiert die Informationen und stellt sie übersichtlich im Chat oder als HTML-Artefakt dar. Dieser Output dient dem Architekten als **strukturierte Vorlage zum Ablesen und manuellen Nachmodellieren** im eigentlichen Werkzeug (z.B. Sparx Enterprise Architect). Die ID-Vergabe und finale semantische Validierung am ADMBw-Metamodell erfolgen zwingend dort.
 
 > 🔒 **Sicherheitshinweis:** Bitte zwingend auf den korrekten Umgang mit eingestuften Daten achten!
 
