@@ -1,4 +1,4 @@
-# 🚀 ADMBw-Extraktor (NAFv4)
+# ADMBw-Extraktor (NAFv4)
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Standard](https://img.shields.io/badge/Standard-ADMBw%20v2025.10-blue)
@@ -14,7 +14,7 @@ Der Extraktor produziert bewusst **keine fertigen, importierbaren Architekturmod
 
 ---
 
-## 🧠 Das Kernkonzept: Warum ein iterativer Workflow?
+## Das Kernkonzept: Warum ein iterativer Workflow?
 
 Die ADMBw-NAFv4-Vorgaben sind hochkomplex (317 Stereotype, strikte Metamodell- und Konnektor-Regeln). Wenn eine KI versucht, ein ganzes Dokument in einem einzigen Zug in ein fertiges Architekturmodell zu verwandeln, kommt es unweigerlich zu Halluzinationen, übersehenen Details oder Regelverstößen.
 
@@ -41,7 +41,7 @@ Der ADMBw-Extraktor erzwingt daher einen **iterativen Step-by-Step-Ansatz**. Das
 
 ---
 
-## 🔄 Workflow-Visualisierung
+## Workflow-Visualisierung
 
 ```mermaid
 graph TD
@@ -77,7 +77,7 @@ graph TD
 
 ---
 
-## 📁 Repository-Struktur
+## Repository-Struktur
 
 | Datei | Beschreibung |
 |-------|--------------|
@@ -90,7 +90,7 @@ graph TD
 
 ---
 
-## 🔧 Einrichtung in OpenWebUI (Dauer: ~3 Minuten)
+## Einrichtung in OpenWebUI (Dauer: ~3 Minuten)
 
 ### 1. Modell anlegen & System-Prompt konfigurieren
 1. Erstelle im **Workspace** ein neues Modell (z.B. basierend auf GPT-4o, Claude 3.5 Sonnet oder DeepSeek).
@@ -109,7 +109,7 @@ graph TD
 
 ---
 
-## 🌐 Nutzung außerhalb von OpenWebUI (ChatGPT, Claude, etc.)
+## Nutzung außerhalb von OpenWebUI (ChatGPT, Claude, etc.)
 
 Du hast kein OpenWebUI zur Verfügung? Kein Problem. Der Extraktor funktioniert auch in klassischen KI-Chats, indem du die Dateien einfach direkt übergibst:
 
@@ -119,7 +119,7 @@ Du hast kein OpenWebUI zur Verfügung? Kein Problem. Der Extraktor funktioniert 
 
 ---
 
-## 🛠 Nutzung im Alltag
+## Nutzung im Alltag
 
 1. Öffne einen Chat mit dem neuen ADMBw-Modell.
 2. Lade ein Prosa-Dokument hoch oder kopiere den Text in den Chat.
