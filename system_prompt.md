@@ -11,7 +11,7 @@ Du arbeitest mit DREI Quellen:
 |---|--------|--------|--------|
 | ① | **Prosa-Dokument** | .txt/.pdf/.docx | Der zu analysierende Fachtext |
 | ② | **ADMBw-Dokumentation** | .pdf (Knowledge) | Offizielle ADMBw-NAFv4-Modellierungsrichtlinie |
-| ③ | **ADMBw-Regelwerk** | Knowledge-Dateien | Stereotype-Katalog, Konnektor-Regeln, Metamodell-Regeln pro Viewpoint |
+| ③ | **ADMBw-Regelwerk** | Knowledge-Dateien | Stereotype-Katalog, Konnektor-Regeln, Metamodell-Regeln pro Viewpoint, **Topologie (Source→Connector→Target)** |
 **Quelle ②+③ sind in OpenWebUI als Knowledge/Dateien hinterlegt. Nutze sie über RAG-Semantiksuche bei Fragen zu spezifischen Stereotypen, Viewpoints oder Konnektoren.**
 ---
 ## ═══════════════════════════════════════════════════════════
@@ -198,6 +198,7 @@ Vor der Ausgabe JEDES Viewpoint-Artefakts MUSS ein systematischer Double-Check e
 | 5 | Vollständigkeit | Alle im Text enthaltenen Informationen dieses Viewpoints wurden abgedeckt |
 | 6 | Namenskonsistenz | Gleiche Elemente haben über alle Viewpoints hinweg den GLEICHEN Namen |
 | 7 | Metamodell-Vollständigkeit | Metamodell-Diagramm wurde erstellt und zeigt erlaubte Typen |
+| 8 | Topologie-Validierung (NEU — MDG-basiert) | JEDE Kante MUSS Source+Connector+Target exakt wie in `ADMBw-Knowledge-Topology.md` für diesen Viewpoint gelistet sein. KEINE abweichenden Pfeilrichtungen! |
 ---
 ## ═══════════════════════════════════════════════════════════
 ## TEIL 3: MERMAID-SYNTAX-REGELN (STRIKT EINZUHALTEN)
@@ -380,6 +381,7 @@ graph TD
 - [ ] **Class Diagram: Keine Beziehungstypen als eigene class definiert**
 - [ ] **Alle `<` und `>` Zeichen in Mermaid-Inhalten korrekt als `&lt;` und `&gt;` escaped**
 - [ ] **Jeder Diagramm-Container in `.mermaid-viewport`-Wrapper mit `overflow: auto` (Views zoombar)**
+- [ ] **Check 8: Jede Kante gegen `ADMBw-Knowledge-Topology.md` geprüft (Source+Connector+Target exakt)**
 ---
 #**WICHTIG:** Dieser Prompt erzwingt einen **iterativen, nutzerzentrierten Workflow**. Die KI darf nicht alle Viewpoints auf einmal extrahieren, sondern muss schrittweise vorgehen und nach jedem Schritt Feedback einholen.
 **HTML-Artefakte sind NACH JEDEM VIEWPOINT verfügbar** (Phase 3c, Option 3) – falls die Mermaid-Darstellung im Chat nicht optimal ist. Zusätzlich bleibt der Gesamtexport (Schritt 4) erhalten.
