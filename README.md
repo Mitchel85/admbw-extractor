@@ -110,7 +110,7 @@ graph TD
 
 Du hast kein OpenWebUI zur Verfügung? Kein Problem. Der Extraktor funktioniert auch in klassischen KI-Chats, indem du die Dateien einfach direkt übergibst:
 
-1. Lade die **vier Markdown-Dateien** (`system_prompt.md` sowie die drei `ADMBw-Knowledge-*.md` Dateien) als Dateianhang in deinen Chat hoch.
+1. Lade die **fünf Markdown-Dateien** (`system_prompt.md` sowie die vier `ADMBw-Knowledge-*.md` Dateien) als Dateianhang in deinen Chat hoch.
 2. Lade dein **Fachtext-Dokument** hoch.
 3. Schreibe als erste Nachricht: *"Bitte lies die angehängte Datei system_prompt.md als deine Kern-Anweisung und nutze die Knowledge-Dateien als Wissensbasis. Wende den dort beschriebenen Workflow auf mein Dokument an."*
 
