@@ -5,7 +5,7 @@
 ![Framework](https://img.shields.io/badge/Framework-NAFv4-orange)
 ![Plattform](https://img.shields.io/badge/Platform-OpenWebUI-purple)
 
-Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (maßgeschneidert für OpenWebUI), der architekturrelevante Fachtexte (Prosa) automatisch analysiert. Er nutzt einen streng iterativen Prozess mit einem 7-fachen Double-Check, um die extrahierten Informationen regelkonform aufzubereiten.
+Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (maßgeschneidert für OpenWebUI), der architekturrelevante Fachtexte (Prosa) automatisch analysiert. Er nutzt einen streng iterativen Prozess mit einem **8-fachen Double-Check**, um die extrahierten Informationen regelkonform aufzubereiten.
 
 ### ⚠️ Wichtiger Hinweis zur Zielsetzung
 Der Extraktor produziert bewusst **keine fertigen, importierbaren Architekturmodelle** (wie z.B. XMI). Das Tool extrahiert die Informationen und stellt sie übersichtlich im Chat oder als HTML-Artefakt dar. Dieser Output dient dem Architekten als **strukturierte Vorlage zum Ablesen und manuellen Nachmodellieren** im eigentlichen Werkzeug (z.B. Sparx Enterprise Architect). Die ID-Vergabe und finale semantische Validierung am ADMBw-Metamodell erfolgen zwingend dort.
@@ -31,8 +31,8 @@ Der ADMBw-Extraktor erzwingt daher einen **iterativen Step-by-Step-Ansatz**. Das
 3. **Phase 3: Viewpoint-Zuordnung**
    Aus dem freigegebenen Architektur-Netz leitet die KI nun zielgerichtet exakt jene NAF-Viewpoints ab, die den ursprünglichen Concern beantworten.
    *👉 Dein Part: Du bestätigst die ausgewählten Sichten auf dein Modell.*
-4. **Phase 4: Der 7-fache Double-Check**
-   Die KI prüft ihren Entwurf pro Viewpoint hart gegen die hinterlegte Knowledge-Base (AppliesTo-Regeln, Viewpoint-Zulässigkeit, etc.).
+4. **Phase 4: Der 8-fache Double-Check**
+   Die KI prüft ihren Entwurf pro Viewpoint hart gegen die hinterlegte Knowledge-Base (AppliesTo-Regeln, Viewpoint-Zulässigkeit, **Topologie**, etc.).
    *👉 Dein Part: Du sichtest den Fehler-Report und gibst das Go zur Fehlerbehebung.*
 5. **Phase 5: Finale Generierung**
    Erst nach deiner finalen Freigabe werden die komplexen Mermaid-Diagramme und Markdown-Tabellen gerendert.
@@ -51,11 +51,13 @@ graph TD
     C1[📖 Stereotype]
     C2[🔗 Konnektoren]
     C3[📐 Viewpoints]
+    C4[🔝 Topologie]
     end
     
     C1 -.-> B
     C2 -.-> B
     C3 -.-> B
+    C4 -.-> B
     
     B --> E{Iterativer 5-Phasen-Prozess}
     
@@ -68,7 +70,7 @@ graph TD
     F -->|Nutzer-Freigabe| G[Ableitung der NAF-Viewpoints]
     G -.->|Nutzer ergänzt / passt an| G
     
-    G -->|Nutzer-Freigabe| H[7-facher Regel-Double-Check]
+    G -->|Nutzer-Freigabe| H[8-facher Regel-Double-Check]
     
     H -->|Nutzer-Freigabe| I[✅ Finale Diagramme & Tabellen]
 ```
@@ -96,10 +98,11 @@ graph TD
 3. Kopiere den gesamten Inhalt der Datei `system_prompt.md` in das Feld **System Prompt**.
 
 ### 2. Knowledge-Dateien hinterlegen
-1. Gehe in den Bereich **Knowledge** und lade die folgenden drei Dateien hoch:
+1. Gehe in den Bereich **Knowledge** und lade die folgenden **vier** Dateien hoch:
    * `ADMBw-Knowledge-Stereotypes.md`
    * `ADMBw-Knowledge-Viewpoints.md`
    * `ADMBw-Knowledge-Connectors.md`
+   * `ADMBw-Knowledge-Topology.md`
 2. Verknüpfe diese Knowledge-Base mit deinem zuvor erstellten Modell.
 
 *(Tipp: Die Original-PDF-Dokumentation muss nicht in die Knowledge-Base geladen werden. Die Markdown-Dateien bilden die gesamte Logik wesentlich token-effizienter und präziser für das LLM ab.)*
