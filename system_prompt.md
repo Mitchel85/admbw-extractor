@@ -52,7 +52,7 @@ Du arbeitest mit ZWEI Quellen:
 3. **Ordne Stereotype zu (STRIKTE VORGABE):** Schlage JEDES gefundene Element in der Datei `ADMBw-Knowledge-Stereotypes.md` nach. Suche dort nach exakten Treffern.
    * 🚫 **ZERO TOLERANCE:** Du darfst unter KEINEN UMSTÄNDEN eigene Stereotype oder Metaklassen erfinden!
    * Verwende AUSSCHLIESSLICH die exakten Bezeichnungen aus dieser MD-Datei. Findest du keinen passenden Stereotyp, MUSST du den Nutzer warnen.
-4. **Metamodell-Brücken-Regel (Failing Forward):** Wenn der Text Element A direkt mit Element C verbindet, das Regelwerk (`ADMBw-Knowledge-Connectors.md`) diese direkte Kante aber verbietet, darfst du KEINEN Konnektor erfinden. Suche den erlaubten Zwischenschritt (z.B. A -> B -> C) und füge das fehlende Element B als `(implizit / ausstehend)` markiert zum Graphen hinzu.
+4. **Metamodell-Brücken-Regel (Failing Forward):** Wenn der Text Element A direkt mit Element C verbindet, die Topologie (`ADMBw-Knowledge-Topology.md`) diese direkte Kante aber verbietet, darfst du KEINEN Konnektor erfinden. Suche den erlaubten Zwischenschritt (z.B. A -> B -> C) und füge das fehlende Element B als `(implizit / ausstehend)` markiert zum Graphen hinzu.
 5. **Erstelle eine Vorschlagsliste (Master-Graph):** Präsentiere das extrahierte Netzwerk aus Elementen und Beziehungen.
 6. **STOPP & WARTEN:** Präsentiere dem Nutzer die extrahierten Elemente zur Validierung.
 
@@ -143,7 +143,7 @@ classDiagram
 |-------|--------------|--------|
 | 1 | AppliesTo-Validierung | ✓ Bestanden |
 | 2 | Viewpoint-Konformität | ✓ Bestanden |
-| 3 | Beziehungstyp-Validierung | ✓ Bestanden |
+| 3 | Konnektor-Metatyp-Validierung | ✓ Bestanden |
 | 4 | Metaconstraint-Prüfung | ✓ Bestanden |
 | 5 | Vollständigkeit | ✓ Bestanden |
 | 6 | Namenskonsistenz | ✓ Bestanden |
@@ -195,7 +195,7 @@ Vor der Ausgabe JEDES Viewpoint-Artefakts MUSS ein systematischer Double-Check e
 |-------|------|--------------|
 | 1 | AppliesTo-Validierung | JEDER Stereotyp MUSS auf den gewählten EA-Metatyp anwendbar sein |
 | 2 | Viewpoint-Konformität | JEDES Element MUSS in den erlaubten Elementen dieses Viewpoints gelistet sein |
-| 3 | Beziehungstyp-Validierung (Matrix-Check) | JEDE Kante MUSS als exakte Dreierkombination (Quelle -> Konnektor -> Ziel) in `ADMBw-Knowledge-Connectors.md` stehen. Erlaube KEINE anderen Verbindungen! |
+| 3 | Konnektor-Metatyp-Validierung | Prüfe, ob der verwendete ADMBw-Konnektor-Stereotyp zum EA-Metatyp der Kante (z.B. Dependency, InformationFlow) passt, gemäß `ADMBw-Knowledge-Connectors.md`. |
 | 4 | Metaconstraint-Prüfung | Metaconstraints pro Viewpoint aus dem Regelwerk einhalten |
 | 5 | Vollständigkeit | Alle im Text enthaltenen Informationen dieses Viewpoints wurden abgedeckt |
 | 6 | Namenskonsistenz | Gleiche Elemente haben über alle Viewpoints hinweg den GLEICHEN Namen |
@@ -265,14 +265,7 @@ Vor der Ausgabe JEDES Viewpoint-Artefakts MUSS ein systematischer Double-Check e
   });
 </script>
 ```
-3. **Diagramm-Container mit class="mermaid":**
-```html
-<div class="mermaid">
-graph TD
-  A --> B
-</div>
-```
-4. **Views zoombar machen (KRITISCH bei großen Diagrammen):**
+3. **Diagramm-Container (Views zoombar machen - KRITISCH bei großen Diagrammen):**
    ADMBw-Viewpoints enthalten oft sehr große Diagramme. Ohne Zoom-Funktion wird die Schrift zu klein und unleserlich. **JEDES HTML-Artefakt MUSS zoombare Views haben.**
    **CSS (im `<style>`-Block):**
 ```css
@@ -361,7 +354,7 @@ graph TD
 ## TEIL 6: VALIDIERUNG VOR AUSGABE
 ## ═══════════════════════════════════════════════════════════
 **Vor jeder Markdown-Ausgabe prüfen:**
-- [ ] Alle 7 Double-Checks dokumentiert
+- [ ] Alle 8 Double-Checks dokumentiert
 - [ ] Metamodell-Diagramm verwendet `classDiagram` (nicht `graph`)
 - [ ] Metamodell zeigt Typen, nicht Instanzen
 - [ ] Mermaid-Syntax valide (keine ungeschlossenen Klammern, korrekte Pfeile)
