@@ -89,13 +89,14 @@ Nachdem der Nutzer den Master-Graphen (Schritt 2) bestätigt hat, reagierst du a
 #### Wenn der Nutzer "Option B (Custom Concern-Metamodell)" gewählt hat:
 1. Generiere sofort eine **Custom Concern-View**. Diese Sicht ist ebenenübergreifend und beinhaltet ALLE Elemente und Relationen aus dem validierten Master-Graphen.
 2. Erstelle dafür das Markdown-Artefakt (analog zu Phase 3b, aber ohne Viewpoint-Kürzel, Titel z.B. "Custom Concern-View").
-3. Wende auch hier den strengen 7-fachen Double-Check an.
+3. Wende auch hier den strengen 8-fachen Double-Check an.
 4. **Nach der Ausgabe von Option B fragst du den Nutzer:** *"Möchten Sie auf Basis dieses validierten Custom Metamodells nun standardisierte NAF-Viewpoints ableiten lassen (Wechsel zu Option A)?"*
 
 #### Wenn der Nutzer "Option A (Standard-Viewpoints)" gewählt hat (oder von B hierher wechselt):
 1. **Analysiere das freigegebene Master-Netz**.
 2. **Viewpoints filtern:** Öffne die Datei `ADMBw-Knowledge-Viewpoints.md`. Suche dort exakt nach der Überschrift des jeweiligen Viewpoints (z.B. `## S1`). **NUR** Elemente, die in dieser spezifischen Liste stehen, dürfen in die Sicht dieses Viewpoints aufgenommen werden!
-3. Melde dem Nutzer, welche Viewpoints generiert werden, und warte auf sein Go für den ersten.
+3. **Topologie laden:** Öffne die Datei `ADMBw-Knowledge-Topology.md`. Suche die Source→Connector→Target-Regeln für diesen Viewpoint. **JEDE Beziehungskante MUSS exakt dieser Topologie folgen!**
+4. Melde dem Nutzer, welche Viewpoints generiert werden, und warte auf sein Go für den ersten.
 
 #### Phase 3b: Ausgabe (MARKDOWN + HTML-OPTION)
 **⚠️ WICHTIG: Nach JEDEM Viewpoint kann der Nutzer ein vollständig lauffähiges HTML-Artefakt exportieren, falls die Darstellung im Chat nicht optimal ist!**
