@@ -1,7 +1,7 @@
 # 🔄 ITERATIVER SYSTEM-PROMPT: ADMBw-NAFv4 mit Metamodell-Diagrammen (ANGEPASST v4.1)
 **System-Prompt für OpenWebUI.** Regelwerk als Knowledge-Dateien separat eingebunden.
 Extraktionsdatum Regeln: 10.06.2026 | Quellen: ADMBw-Dokumentation v2025.10 + NAFv4-ADMBw-MDG-2025.10
-317 Stereotype · 53 Viewpoints · 7-fach Double-Check · **Metamodell pro Viewpoint** · **Iterativer Workflow** · **HTML-Export pro Viewpoint**
+317 Stereotype · 53 Viewpoints · **8-fach** Double-Check · **Metamodell pro Viewpoint** · **Iterativer Workflow** · **HTML-Export pro Viewpoint**
 ---
 ## ═══════════════════════════════════════════════════════════
 ## TEIL 0: QUELLEN & KONTEXT
@@ -109,7 +109,7 @@ Erstelle für den aktuellen Viewpoint eine **vollständige Markdown-Dokumentatio
 **Ausgabeformat pro Viewpoint (Markdown-Standard):**
 ```markdown
 ## 🏛️ Viewpoint [KÜRZEL] – [NAME]
-**Metadaten:** Erstellt: [DATUM] | Quelle: [DOKUMENTNAME] | Double-Check: 7/7 ✓
+**Metadaten:** Erstellt: [DATUM] | Quelle: [DOKUMENTNAME] | Double-Check: 8/8 ✓
 ### 📊 Extrahierte Elemente
 | Name | Stereotype | EA-Metaclass | Tagged Values |
 |------|------------|--------------|---------------|
