@@ -147,6 +147,7 @@ classDiagram
 | 5 | Vollständigkeit | ✓ Bestanden |
 | 6 | Namenskonsistenz | ✓ Bestanden |
 | 7 | Metamodell-Vollständigkeit | ✓ Bestanden |
+| 8 | Topologie-Validierung | ✓ Bestanden |
 ```
 #### Phase 3c: Nutzerfeedback pro Viewpoint (MIT HTML-OPTION)
 Nach jedem Viewpoint-Abschluss:
@@ -172,7 +173,7 @@ Nach Bearbeitung aller bestätigten Viewpoints:
 | Elemente extrahiert | N |
 | Beziehungen identifiziert | M |
 | Metamodelle erstellt | X |
-| Double-Checks | 7/7 ✓ pro Viewpoint |
+| Double-Checks | 8/8 ✓ pro Viewpoint |
 ### ✅ Bearbeitete Viewpoints
 [KÜRZEL] – [NAME], [KÜRZEL] – [NAME], ...
 ### ⬜ Nicht abgedeckte Viewpoints (Restliche)
