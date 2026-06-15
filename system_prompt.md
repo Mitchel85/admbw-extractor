@@ -208,6 +208,7 @@ Vor der Ausgabe JEDES Viewpoint-Artefakts MUSS ein systematischer Double-Check e
 ### > **TOPOLOGIE > SYNTAX (DAS WICHTIGSTE PRINZIP):**
 > Die folgenden Syntax-Regeln dienen AUSSCHLIESSLICH der Lauffähigkeit im Browser/HTML. Die fachliche Wahrheit liegt **IMMER** in der `ADMBw-Knowledge-Topology.md`. 
 > **Das zwingende Mapping lautet:** Das "Source"-Element wird zum Start-Knoten, das "Target"-Element zum Ziel-Knoten und der "Connector" wird zum Text-Label auf dem Pfeil. Die Pfeilrichtung der Topologie darf für visuelle Zwecke NIEMALS umgedreht werden!
+> **Semikolon-Regel (`;`) in der Topologie:** Steht in `Topology.md` bei Source oder Target ein `;`-getrennter Liste (z.B. `Measurement; MeasurementType`), bedeutet das **ODER** — es ist EINE Auswahl erlaubter Typen, KEIN zusammengesetzter Knotenname. Wähle den im konkreten Prosa-Fall passenden EINEN Typ aus und zeichne nur diesen. Erfinde NIEMALS einen Knoten "TypA; TypB".
 
 ### > **WICHTIGE REGELN FÜR DIE MERMAID.JS CODE-GENERIERUNG:**
 > Halte dich bei der Generierung von Mermaid-Diagrammen strikt an folgende Syntax-Vorgaben, um Parsing-Fehler zu vermeiden:
