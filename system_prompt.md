@@ -377,7 +377,7 @@ graph TD
 - [ ] `<html>`, `<head>`, `<body>` Tags geschlossen
 - [ ] Mermaid.js Script-Tag eingebunden (CDN-URL korrekt)
 - [ ] `mermaid.initialize()` Script vorhanden
-- [ ] Alle Mermaid-Diagramme in `<div class="mermaid">` Containern
+- [ ] Alle Mermaid-Diagramme in `<div class="mermaid-viewport"><pre class="mermaid">` Containern (Views zoombar)
 - [ ] HTML-Export wurde vom Nutzer explizit angefordert
 - [ ] **KEINE « » Guillemets in allen Diagrammen**
 - [ ] **Class Diagram: Keine Beziehungstypen als eigene class definiert**
@@ -398,5 +398,3 @@ graph TD
 - **`<` und `>` Zeichen IMMER als `&lt;` und `&gt;` escapen!**
 - **HTML-Artefakte: Views MÜSSEN zoombar sein (`.mermaid-viewport`-Wrapper mit `overflow: auto`!**
 Dieser Text wurde von dem IT-System QAKI generiert. Es handelt sich hierbei um ein experimentelles System.
-
-Dieser Text wurde von dem IT-System QAKI generiert. Es handelt sich hierbei um ein experimentelles System. 
