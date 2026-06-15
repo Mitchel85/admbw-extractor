@@ -205,8 +205,12 @@ Vor der Ausgabe JEDES Viewpoint-Artefakts MUSS ein systematischer Double-Check e
 ## ═══════════════════════════════════════════════════════════
 ## TEIL 3: MERMAID-SYNTAX-REGELN (STRIKT EINZUHALTEN)
 ## ═══════════════════════════════════════════════════════════
+### > **TOPOLOGIE > SYNTAX (DAS WICHTIGSTE PRINZIP):**
+> Die folgenden Syntax-Regeln dienen AUSSCHLIESSLICH der Lauffähigkeit im Browser/HTML. Die fachliche Wahrheit liegt **IMMER** in der `ADMBw-Knowledge-Topology.md`. 
+> **Das zwingende Mapping lautet:** Das "Source"-Element wird zum Start-Knoten, das "Target"-Element zum Ziel-Knoten und der "Connector" wird zum Text-Label auf dem Pfeil. Die Pfeilrichtung der Topologie darf für visuelle Zwecke NIEMALS umgedreht werden!
+
 ### > **WICHTIGE REGELN FÜR DIE MERMAID.JS CODE-GENERIERUNG:**
-> Halte dich bei der Generierung von Mermaid-Diagrammen strikt an folgende Syntax-Vorgaben, um Parsing-Fehler im Browser zu vermeiden:
+> Halte dich bei der Generierung von Mermaid-Diagrammen strikt an folgende Syntax-Vorgaben, um Parsing-Fehler zu vermeiden:
 #### 1. **Class Diagram (classDiagram) – Metamodell-Regeln:**
 | Regel | Falsch ❌ | Richtig ✅ |
 |-------|----------|-----------|
@@ -216,7 +220,7 @@ Vor der Ausgabe JEDES Viewpoint-Artefakts MUSS ein systematischer Double-Check e
 | **Elementtypen** | Connector-Stereotype als Klasse | Nur Class/Object/Activity/etc. als Klasse |
 - **Verwende NIEMALS doppelte Anführungszeichen** bei der Definition von Klassennamen oder Beziehungen.
 - **Beziehungstypen (Connector-Stereotype) dürfen NIEMALS als eigene `class` definiert werden!**
-- **Beziehungen werden ausschließlich als Pfeile mit Labels dargestellt** `ClassA --> ClassB : StereotypName`).
+- **Beziehungen werden ausschließlich als Pfeile mit Labels dargestellt** (Beispiel: `ClassA --> ClassB : StereotypName`).
 - **Nur echte Elementtypen** (Class, Object, Activity, Requirement, Constraint, etc.) **dürfen als `class` erscheinen**.
 - Vermeide Leerzeichen in den reinen Klassenbezeichnern (nutze stattdessen CamelCase oder Unterstriche).
 #### 2. **Flowcharts (graph / flowchart):**
@@ -298,6 +302,7 @@ graph TD
    - Nutzer können per Scrollrad oder Touchpad horizontal/vertikal durch das gesamte Diagramm navigieren
 ---
 ### 📈 Für Instanz-Diagramme (graph TD):
+- Das Mapping lautet zwingend: `Startknoten(Source) -->|Label(Connector)| Zielknoten(Target)`
 - Eckige Klammern für Namen mit Sonderzeichen: `["Name (Stereotyp)"]`
 - `<br/>` für Zeilenumbrüche in Labels
 - Keine Leerzeichen in Node-IDs (A, B, C)
@@ -305,6 +310,7 @@ graph TD
 - **KEINE « » Guillemets in Labels!**
 - **`<` und `>` als `&lt;` und `&gt;` escapen!**
 ### 🏗️ Für Metamodell-Diagramme (classDiagram):
+- Das Mapping lautet zwingend: `Startknoten(Source) --> Zielknoten(Target) : Label(Connector)`
 - `class` für alle Elementtypen **(ohne Anführungszeichen!)**
 - Stereotype in `<< >>` Notation **(NIEMALS « »!)**
 - Beziehungen mit `-->` und Label **(ohne Anführungszeichen!)**
