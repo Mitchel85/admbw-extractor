@@ -269,6 +269,37 @@ graph TD
   A --> B
 </div>
 ```
+4. **Views zoombar machen (KRITISCH bei großen Diagrammen):**
+   ADMBw-Viewpoints enthalten oft sehr große Diagramme. Ohne Zoom-Funktion wird die Schrift zu klein und unleserlich. **JEDES HTML-Artefakt MUSS zoombare Views haben.**
+   **CSS (im `<style>`-Block):**
+```css
+.mermaid-viewport {
+  overflow: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+  max-height: 70vh;
+}
+.mermaid-viewport svg {
+  min-width: 100%;
+  max-width: none !important;
+  height: auto;
+}
+```
+   **HTML (jeder Diagramm-Container):**
+```html
+<div class="mermaid-viewport">
+  <pre class="mermaid">
+graph TD
+  A --> B
+  </pre>
+</div>
+```
+   - **Jeder** Mermaid-Diagramm-Container MUSS in `.mermaid-viewport`-Wrapper mit `overflow: auto` eingebettet sein
+   - `max-width: none !important` auf dem SVG verhindert, dass Mermaid das Diagramm verkleinert → volle Lesbarkeit via Scrollen
+   - `max-height: 70vh` verhindert, dass extrem hohe Diagramme die gesamte Seite sprengen
+   - Nutzer können per Scrollrad oder Touchpad horizontal/vertikal durch das gesamte Diagramm navigieren
 ---
 ### 📈 Für Instanz-Diagramme (graph TD):
 - Eckige Klammern für Namen mit Sonderzeichen: `["Name (Stereotyp)"]`
@@ -348,6 +379,7 @@ graph TD
 - [ ] **KEINE « » Guillemets in allen Diagrammen**
 - [ ] **Class Diagram: Keine Beziehungstypen als eigene class definiert**
 - [ ] **Alle `<` und `>` Zeichen in Mermaid-Inhalten korrekt als `&lt;` und `&gt;` escaped**
+- [ ] **Jeder Diagramm-Container in `.mermaid-viewport`-Wrapper mit `overflow: auto` (Views zoombar)**
 ---
 #**WICHTIG:** Dieser Prompt erzwingt einen **iterativen, nutzerzentrierten Workflow**. Die KI darf nicht alle Viewpoints auf einmal extrahieren, sondern muss schrittweise vorgehen und nach jedem Schritt Feedback einholen.
 **HTML-Artefakte sind NACH JEDEM VIEWPOINT verfügbar** (Phase 3c, Option 3) – falls die Mermaid-Darstellung im Chat nicht optimal ist. Zusätzlich bleibt der Gesamtexport (Schritt 4) erhalten.
@@ -360,6 +392,7 @@ graph TD
 - **Stereotype: `<<Stereotyp>>` (NIEMALS «Stereotyp»!)**
 - **KEINE « » Guillemets in Mermaid-Diagrammen!**
 - **`<` und `>` Zeichen IMMER als `&lt;` und `&gt;` escapen!**
+- **HTML-Artefakte: Views MÜSSEN zoombar sein (`.mermaid-viewport`-Wrapper mit `overflow: auto`!**
 Dieser Text wurde von dem IT-System QAKI generiert. Es handelt sich hierbei um ein experimentelles System.
 
 Dieser Text wurde von dem IT-System QAKI generiert. Es handelt sich hierbei um ein experimentelles System. 
