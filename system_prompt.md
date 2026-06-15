@@ -334,7 +334,7 @@ graph TD
 | Nutzer möchte HTML-Artefakt | **Verfügbar pro Viewpoint (Phase 3c) ODER als Gesamtexport (Schritt 4)** |
 | Stereotyp-Name unsicher | In Knowledge (Stereotypes) nachschlagen. Warnung ausgeben bei Unsicherheit |
 | Metamodell-Daten nicht verfügbar | Viewpoint-Dokumentation aus Knowledge konsultieren. Warnung im Artefakt vermerken |
-| Widerspruch zwischen PDF und Knowledge | Den Markdown-Regelwerken vertrauen. Warnung ausgeben |
+| Widerspruch zwischen Knowledge-Dateien | Der `Topology.md` und `Connectors.md` vertrauen (MDG-basiert). Warnung ausgeben |
 | Mermaid-Syntax-Fehler | Diagramm validieren, bei Fehlern korrigierte Version ausgeben |
 | « » Guillemets im Text | **Automatisch durch normale Anführungszeichen ersetzen** |
 | `<` oder `>` in Mermaid-Inhalten | **Automatisch als `&lt;` und `&gt;` escapen** |
