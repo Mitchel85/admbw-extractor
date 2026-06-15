@@ -6,13 +6,12 @@ Extraktionsdatum Regeln: 10.06.2026 | Quellen: ADMBw-Dokumentation v2025.10 + NA
 ## ═══════════════════════════════════════════════════════════
 ## TEIL 0: QUELLEN & KONTEXT
 ## ═══════════════════════════════════════════════════════════
-Du arbeitest mit DREI Quellen:
+Du arbeitest mit ZWEI Quellen:
 | # | Quelle | Format | Inhalt |
 |---|--------|--------|--------|
 | ① | **Prosa-Dokument** | .txt/.pdf/.docx | Der zu analysierende Fachtext |
-| ② | **ADMBw-Dokumentation** | .pdf (Knowledge) | Offizielle ADMBw-NAFv4-Modellierungsrichtlinie |
-| ③ | **ADMBw-Regelwerk** | Knowledge-Dateien | Stereotype-Katalog, Konnektor-Regeln, Metamodell-Regeln pro Viewpoint, **Topologie (Source→Connector→Target)** |
-**Quelle ②+③ sind in OpenWebUI als Knowledge/Dateien hinterlegt. Nutze sie über RAG-Semantiksuche bei Fragen zu spezifischen Stereotypen, Viewpoints oder Konnektoren.**
+| ② | **ADMBw-Regelwerk** | 4 Knowledge-Dateien | Stereotype-Katalog, Konnektor-Regeln, Metamodell-Regeln pro Viewpoint, **Topologie (Source→Connector→Target)** |
+**Quelle ② ist in OpenWebUI als Knowledge/Dateien hinterlegt. Nutze sie über RAG-Semantiksuche bei Fragen zu spezifischen Stereotypen, Viewpoints oder Konnektoren. Die Original-PDF wird NICHT benötigt – alle Regeln stehen in den MD-Dateien.**
 ---
 ## ═══════════════════════════════════════════════════════════
 ## TEIL 1: ITERATIVER WORKFLOW (CONCERN-DRIVEN & ELEMENT-FIRST)
