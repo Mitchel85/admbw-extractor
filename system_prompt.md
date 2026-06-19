@@ -256,13 +256,99 @@ classDiagram
 
 ---
 
-## HTML-EXPORT
+## HTML-EXPORT (KRITISCH — EXAKT DIESES TEMPLATE NUTZEN)
 
-- `<!DOCTYPE html>` + Mermaid-CDN + ggf. BPMN-CDN
-- `mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' })`
-- **Zoombare Views:** `.mermaid-viewport { overflow: auto; }` + `svg { max-width: none !important; }`
-- **BPMN-Views:** Separater Container mit `new BpmnJS(...)`
-- Dark-Theme: `--bg: #0a0e14; --surface: #131820; --text: #c8d6e5`
+**Fehlerquelle erkannt:** Mermaid-Code läuft im Live-Editor (v11.15), aber nicht im HTML — weil der Prompt bisher CDN v10 + falsche Script-Platzierung vorschrieb.  
+**Fix:** IMMER Mermaid v11 CDN, IMMER Script am Body-Ende, IMMER mit DOMContentLoaded.
+
+### Pflicht-Template (exakt kopieren, nur `<!-- DIAGRAMME -->` ersetzen):
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[TITEL]</title>
+<style>
+  /* Zoombare Views PFICHT */
+  .mermaid-viewport {
+    overflow: auto; border: 1px solid #e2e8f0; border-radius: 8px;
+    padding: 16px; background: #fff; max-height: 70vh;
+  }
+  .mermaid-viewport svg { min-width: 100%; max-width: none !important; height: auto; }
+  body { font-family: system-ui, sans-serif; max-width: 1100px; margin: 0 auto; padding: 20px; }
+</style>
+</head>
+<body>
+<h1>[TITEL]</h1>
+<p>[BESCHREIBUNG]</p>
+
+<!-- DIAGRAMME als <pre class="mermaid"> in .mermaid-viewport -->
+
+
+<!-- ⚠️ Mermaid-Script MUSS am ENDE von body stehen: -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'loose',
+    theme: 'default'
+  });
+  // Erst rendern, wenn DOM vollständig geladen ist:
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.run({ querySelector: '.mermaid' });
+  });
+</script>
+</body>
+</html>
+```
+
+### Diagramm-Container pro Viewpoint:
+```html
+<div class="mermaid-viewport">
+  <pre class="mermaid">
+classDiagram
+    class TypA {
+        &lt;&lt;Class&gt;&gt;
+    }
+    TypA --> TypB : Konnektor
+  </pre>
+</div>
+```
+
+### WICHTIGSTE REGELN FÜR FEHLERFREIE HTML-ARTEFAKTE:
+
+| Regel | Grund |
+|-------|-------|
+| **Mermaid v11 CDN** (nicht v10) | v10 fehlen: `timeline`, `quadrantChart`, `block-beta` |
+| **Script am Body-Ende** | DOM muss fertig sein, bevor Mermaid `<pre>`-Tags findet |
+| **`startOnLoad: false`** | Verhindert Race-Condition: Mermaid lädt, aber `<pre>` noch nicht im DOM |
+| **`mermaid.run()` nach DOMContentLoaded** | Garantiert: erst rendern, wenn ALLE `<pre class="mermaid">` im DOM sind |
+| **`securityLevel: 'loose'`** | `'strict'` (default) blockiert bestimmte Mermaid-Features |
+| **`&lt;` und `&gt;` in classDiagram** | Im HTML-Source escapen: `&lt;&lt;Stereotype&gt;&gt;` → Browser decodiert → Mermaid sieht `<<Stereotype>>` ✓ |
+| **Keine Umlaute in Mermaid-Code** | Manche CDN-Versionen haben Encoding-Probleme mit Non-ASCII |
+| **`.mermaid-viewport svg { max-width: none }`** | Verhindert, dass Mermaid das Diagramm auf Container-Breite staucht |
+
+### BPMN-Integration (nur bei L4, P4, A4):
+```html
+<script src="https://unpkg.com/bpmn-js@17/dist/bpmn-navigated-viewer.production.min.js"></script>
+<div id="bpmn-canvas" style="height:500px;background:#fff;border-radius:6px;"></div>
+<script>
+  const viewer = new BpmnJS({ container: '#bpmn-canvas' });
+  viewer.importXML(`...BPMN XML...`).then(() => viewer.get('canvas').zoom('fit-viewport'));
+</script>
+```
+
+### Dark-Theme-Option:
+Für Dark-Theme das Mermaid-Theme wechseln + CSS-Variablen setzen:
+```js
+mermaid.initialize({ theme: 'dark', ... });
+```
+```css
+body { background: #0a0e14; color: #c8d6e5; }
+.mermaid-viewport { background: #0d1117; border-color: #1a2533; }
+```
 
 ---
 
