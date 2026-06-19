@@ -1,4 +1,4 @@
-# ADMBw-Extraktor (NAFv4 · v5.2)
+# ADMBw-Extraktor (v5.2 - Experimental)
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Standard](https://img.shields.io/badge/Standard-ADMBw%20v2025.10-blue)
