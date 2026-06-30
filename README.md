@@ -6,7 +6,7 @@
 ![Plattform](https://img.shields.io/badge/Platform-OpenWebUI-purple)
 ![BPMN](https://img.shields.io/badge/BPMN-L4%20%7C%20P4%20%7C%20A4-red)
 
-Der **ADMBw-Extraktor** ist ein KI-gestützter Agent (OpenWebUI), der architekturrelevante Fachtexte analysiert und **pro Viewpoint ein vollständiges Metamodell-Diagramm** sowie ein Instanz-Diagramm generiert. Regelbasis: ADMBw-Dokumentation, NAFv4-MDG und Leitfaden FFFmLV.
+Der **ADMBw-Extraktor** ist ein KI-gestützter Agent, der architekturrelevante Fachtexte analysiert und **pro Viewpoint ein vollständiges Metamodell-Diagramm** sowie ein Instanz-Diagramm generiert. Regelbasis: ADMBw-Dokumentation, NAFv4-MDG und Leitfaden FFFmLV.
 
 ### ⚠️ Hinweis zur Zielsetzung
 
