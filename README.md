@@ -1,4 +1,4 @@
-# 🎯 ADMBw Extraktions-Assistent v. 1.0
+# 🎯 ADMBw Extraktor v. 1.0
 
 KI-gestützter Assistent zur **unterstützenden Extraktion** von Stereotypen und Beziehungen aus natürlichsprachlichen Dokumenten gemäß **ADMBw v2025.10**.
 
